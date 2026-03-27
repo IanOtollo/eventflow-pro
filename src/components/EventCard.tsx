@@ -67,29 +67,29 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
         </div>
 
         {/* Content Area - Bottom Aligned */}
-        <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7 pt-12 bg-gradient-to-t from-black via-black/80 to-transparent">
+        <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8 pt-12 bg-gradient-to-t from-black via-black/90 to-transparent">
           <motion.div 
             className="transition-all duration-500 group-hover:-translate-y-1"
           >
-            <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-white uppercase group-hover:text-accent transition-colors line-clamp-2">
+            <h3 className="font-display text-xl sm:text-2xl font-bold leading-tight tracking-tight text-white uppercase group-hover:text-accent transition-colors line-clamp-2 text-balance">
               {event.title}
             </h3>
             
-            <div className="mt-4 flex flex-col gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-3 w-3 text-accent/60" />
+            <div className="mt-4 flex flex-col gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+              <div className="flex items-center gap-2.5">
+                <Calendar className="h-3.5 w-3.5 text-accent/60" />
                 {format(new Date(event.date), "MMM dd, yyyy")}
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-3 w-3 text-accent/60" />
-                {event.location}
+              <div className="flex items-center gap-2.5">
+                <MapPin className="h-3.5 w-3.5 text-accent/60" />
+                <span className="truncate">{event.location}</span>
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-5 pb-1">
-               <span className="text-[9px] font-black uppercase tracking-[0.3em] text-accent/40 group-hover:text-accent transition-colors">Experience Now</span>
-               <div className="h-8 w-8 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all shadow-xl shadow-black/40">
-                  <Ticket className="h-4 w-4" />
+            <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-6 pb-1">
+               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent/40 group-hover:text-accent transition-colors">Experience Now</span>
+               <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all shadow-xl shadow-black/40">
+                  <Ticket className="h-5 w-5 sm:h-6 sm:w-6" />
                </div>
             </div>
           </motion.div>

@@ -156,65 +156,67 @@ export default function AdminDashboard() {
 
   return (
     <AdminLayout>
-      <div className="space-y-12 pb-20">
-        <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 backdrop-blur-md">
+      <div className="space-y-12 pb-20 px-4 sm:px-0">
+        <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="space-y-6">
+             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 backdrop-blur-md">
                 <Fingerprint className="h-4 w-4 text-accent" />
                 <span className="text-[9px] font-black uppercase tracking-[0.4em] text-accent">Internal Engine Alpha</span>
              </div>
-             <h1 className="font-display text-5xl font-black tracking-tighter uppercase sm:text-6xl text-white">Quantum <span className="text-white/20 italic">Command</span></h1>
-             <p className="mt-2 text-sm font-black uppercase tracking-[0.2em] text-white/30">Global Operational Control Center</p>
+             <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-black tracking-tighter uppercase text-white leading-[0.9] text-balance">
+               Quantum <span className="text-white/20 italic">Command</span>
+             </h1>
+             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 border-l border-white/10 pl-6">Global Operational Control Center</p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Dialog open={eventDialogOpen} onOpenChange={(o) => { setEventDialogOpen(o); if (!o) resetForm(); }}>
               <DialogTrigger asChild>
-                <Button size="lg" className="h-14 rounded-2xl bg-accent px-8 text-[10px] font-black uppercase tracking-[0.3em] text-accent-foreground hover:scale-105 transition-transform shadow-lg shadow-accent/20">
-                  <Plus className="mr-2 h-4 w-4" /> New Showcase
+                <Button size="lg" className="h-16 sm:h-20 rounded-2xl bg-accent px-10 text-[10px] font-black uppercase tracking-[0.4em] text-accent-foreground hover:scale-105 transition-transform shadow-xl shadow-accent/20">
+                  <Plus className="mr-3 h-5 w-5" /> New Showcase
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-2xl bg-[#0A0A0A] border-white/10 text-white rounded-[3rem]">
+              <DialogContent className="max-h-[95vh] overflow-y-auto w-[95vw] sm:max-w-2xl bg-[#0A0A0A] border-white/10 text-white rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-12">
                 <DialogHeader>
-                  <DialogTitle className="font-display text-3xl font-black uppercase tracking-tight">Create Elite Showcase</DialogTitle>
+                  <DialogTitle className="font-display text-3xl font-black uppercase tracking-tight text-white mb-6">Create Elite Showcase</DialogTitle>
                 </DialogHeader>
-                <div className="space-y-8 pt-8">
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Event Identity *</Label>
-                    <Input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5 font-bold" placeholder="Neon Echo Stadium Tour" />
+                <div className="space-y-8">
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Event Identity *</Label>
+                    <Input value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5 font-bold" placeholder="Neon Echo Stadium Tour" />
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Showcase Brief</Label>
-                    <Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="rounded-xl border-white/5 bg-white/5 font-medium" rows={4} placeholder="Detailed experience description..." />
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Showcase Brief</Label>
+                    <Textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="rounded-xl border-white/5 bg-white/5 font-medium p-6" rows={4} placeholder="Detailed experience description..." />
                   </div>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Premiere Date *</Label>
-                      <Input type="datetime-local" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Premiere Date *</Label>
+                      <Input type="datetime-local" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5" />
                     </div>
-                    <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Visual Category</Label>
-                      <Input value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5" placeholder="e.g. World Tour" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Strategic Location *</Label>
-                    <Input value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5" placeholder="City, Country" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Base Pass Price (KSH)</Label>
-                      <Input type="number" step="1" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">Audience Capacity</Label>
-                      <Input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5" />
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Visual Category</Label>
+                      <Input value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5" placeholder="e.g. World Tour" />
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40">High-Res Asset URL</Label>
-                    <Input value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} className="h-14 rounded-xl border-white/5 bg-white/5" placeholder="https://unsplash.com/..." />
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Strategic Location *</Label>
+                    <Input value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5" placeholder="City, Country" />
                   </div>
-                  <Button size="lg" className="h-20 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-xs hover:bg-accent transition-all shadow-2xl" onClick={() => createEvent.mutate()} disabled={createEvent.isPending}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Base Pass Price (KSH)</Label>
+                      <Input type="number" step="1" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5" />
+                    </div>
+                    <div className="space-y-3">
+                      <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">Audience Capacity</Label>
+                      <Input type="number" value={form.capacity} onChange={(e) => setForm({ ...form, capacity: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5" />
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase tracking-widest text-white/40 ml-1">High-Res Asset URL</Label>
+                    <Input value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} className="h-16 rounded-xl border-white/5 bg-white/5" placeholder="https://unsplash.com/..." />
+                  </div>
+                  <Button size="lg" className="h-20 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-[11px] hover:bg-accent transition-all shadow-2xl" onClick={() => createEvent.mutate()} disabled={createEvent.isPending}>
                     {createEvent.isPending ? "Syncing..." : editingEvent ? "Update Asset" : "Deploy Showcase"}
                   </Button>
                 </div>
@@ -224,7 +226,7 @@ export default function AdminDashboard() {
         </header>
 
         {/* Stats Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:gap-6 grid-cols-2 lg:grid-cols-4">
            {[
              { label: "Active Revenue", value: `KSH ${totalRevenue.toLocaleString()}`, icon: TrendingUp, color: "text-accent", trend: "+12.5%" },
              { label: "Live Showcases", value: events.length, icon: Activity, color: "text-purple-500", trend: "+2 new" },
@@ -236,16 +238,16 @@ export default function AdminDashboard() {
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ delay: i * 0.1 }}
-               className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 backdrop-blur-3xl group hover:border-white/10 transition-all"
+               className="rounded-3xl border border-white/5 bg-white/[0.02] p-6 sm:p-8 backdrop-blur-3xl group hover:border-white/10 transition-all"
              >
-               <div className="flex items-center justify-between mb-6">
-                 <div className={`h-12 w-12 flex items-center justify-center rounded-2xl bg-white/5 ${stat.color} group-hover:scale-110 transition-transform`}>
-                   <stat.icon className="h-6 w-6" />
+               <div className="flex items-center justify-between mb-4 sm:mb-6">
+                 <div className={`h-10 w-10 sm:h-12 sm:w-12 flex items-center justify-center rounded-2xl bg-white/5 ${stat.color} group-hover:scale-110 transition-transform`}>
+                   <stat.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                  </div>
-                 <span className="text-[9px] font-black uppercase tracking-widest text-white/20">{stat.trend}</span>
+                 <span className="hidden sm:block text-[9px] font-black uppercase tracking-widest text-white/20">{stat.trend}</span>
                </div>
-               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-1">{stat.label}</p>
-               <h3 className="font-display text-3xl font-black text-white">{stat.value}</h3>
+               <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] text-white/30 mb-1">{stat.label}</p>
+               <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-black text-white">{stat.value}</h3>
              </motion.div>
            ))}
         </div>
@@ -260,7 +262,7 @@ export default function AdminDashboard() {
             </TabsList>
           </div>
 
-          <TabsContent value="events" className="mt-10 overflow-hidden">
+          <TabsContent value="events" className="mt-10 overflow-hidden px-1">
             <div className="grid gap-6">
               {events?.map((event, i) => (
                 <motion.div 
@@ -268,25 +270,28 @@ export default function AdminDashboard() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-2xl sm:rounded-3xl border border-white/5 bg-black/40 p-5 sm:p-6 hover:border-accent/30 transition-all group gap-6"
+                  className="flex flex-col lg:flex-row lg:items-center justify-between rounded-3xl border border-white/5 bg-[#080808]/60 p-6 sm:p-8 hover:border-accent/30 transition-all group gap-8"
                 >
-                  <div className="flex items-center gap-4 sm:gap-6">
-                    <div className="h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl sm:rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:ring-accent transition-all shrink-0">
-                      {event.image_url ? <img src={event.image_url} alt="" className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" /> : <Calendar className="h-full w-full p-3 sm:p-4 text-white/10" />}
+                  <div className="flex items-center gap-6">
+                    <div className="h-16 w-16 sm:h-20 sm:w-20 overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:ring-accent transition-all shrink-0">
+                      {event.image_url ? <img src={event.image_url} alt="" className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" /> : <Calendar className="h-full w-full p-4 text-white/10" />}
                     </div>
-                    <div>
-                      <h4 className="font-display text-lg sm:text-xl font-black text-white uppercase tracking-tight line-clamp-1">{event.title}</h4>
-                      <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-white/30">{format(new Date(event.date), "MMM dd, yyyy")} · {event.location}</p>
+                    <div className="space-y-1">
+                      <h4 className="font-display text-xl sm:text-2xl font-black text-white uppercase tracking-tighter line-clamp-1">{event.title}</h4>
+                      <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-white/30">
+                        <span className="flex items-center gap-2"><Calendar className="h-3.5 w-3.5" /> {format(new Date(event.date), "MMM dd, yyyy")}</span>
+                        <span className="hidden sm:flex items-center gap-2"><MapPin className="h-3.5 w-3.5" /> {event.location}</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between w-full sm:w-auto gap-4 border-t border-white/5 pt-4 sm:border-0 sm:pt-0">
-                    <div className="text-left sm:text-right sm:mr-8">
-                      <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mb-1">Pass Revenue</p>
-                      <p className="font-display text-base sm:text-lg font-black text-accent">KSH {(event.price * 5).toLocaleString()}</p>
+                  <div className="flex items-center justify-between lg:justify-end w-full lg:w-auto gap-8 border-t border-white/5 pt-6 lg:border-0 lg:pt-0">
+                    <div className="text-left lg:text-right">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-1">Pass Revenue</p>
+                      <p className="font-display text-xl font-black text-accent tracking-tighter">KSH {(event.price * 5).toLocaleString()}</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl hover:bg-white/5 text-white/20 hover:text-white" onClick={() => openEdit(event)}><Edit className="h-4 w-4 sm:h-5 sm:w-5" /></Button>
-                      <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl hover:bg-destructive/10 text-destructive/20 hover:text-destructive" onClick={() => { if (confirm("Terminate this showcase asset?")) deleteEvent.mutate(event.id); }}><Trash2 className="h-4 w-4 sm:h-5 sm:w-5" /></Button>
+                    <div className="flex items-center gap-3">
+                      <Button variant="ghost" size="icon" className="h-14 w-14 rounded-2xl hover:bg-white/5 text-white/20 hover:text-white" onClick={() => openEdit(event)}><Edit className="h-5 w-5" /></Button>
+                      <Button variant="ghost" size="icon" className="h-14 w-14 rounded-2xl hover:bg-destructive/10 text-destructive/20 hover:text-destructive" onClick={() => { if (confirm("Terminate this showcase asset?")) deleteEvent.mutate(event.id); }}><Trash2 className="h-5 w-5" /></Button>
                     </div>
                   </div>
                 </motion.div>
@@ -294,38 +299,38 @@ export default function AdminDashboard() {
             </div>
           </TabsContent>
 
-          <TabsContent value="bookings" className="mt-10">
-            <div className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left">
+          <TabsContent value="bookings" className="mt-10 overflow-hidden">
+            <div className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] overflow-hidden backdrop-blur-3xl shadow-2xl">
+              <div className="overflow-x-auto no-scrollbar">
+                <table className="w-full text-left min-w-[800px]">
                   <thead className="bg-white/5 border-b border-white/5">
                     <tr>
-                      <th className="p-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Identifier</th>
-                      <th className="p-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Client</th>
-                      <th className="p-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Showcase</th>
-                      <th className="p-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Status</th>
-                      <th className="p-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/40 text-right">Revenue</th>
+                      <th className="p-10 text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Identifier</th>
+                      <th className="p-10 text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Client</th>
+                      <th className="p-10 text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Showcase</th>
+                      <th className="p-10 text-[10px] font-black uppercase tracking-[0.4em] text-white/40">Status</th>
+                      <th className="p-10 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 text-right">Revenue</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
                     {bookings?.map((b) => (
-                      <tr key={b.id} className="hover:bg-white/[0.02] transition-colors">
-                        <td className="p-8 font-mono text-xs font-black tracking-widest text-accent">{b.ticket_code}</td>
-                        <td className="p-8">
-                          <div className="flex flex-col">
+                      <tr key={b.id} className="hover:bg-white/[0.02] transition-colors group">
+                        <td className="p-10 font-mono text-xs font-black tracking-[0.2em] text-accent/60 group-hover:text-accent">{b.ticket_code}</td>
+                        <td className="p-10">
+                          <div className="flex flex-col gap-1">
                             <span className="font-bold text-white uppercase tracking-tight">{(b as any).guest_name || "Guest Client"}</span>
                             <span className="text-[10px] font-medium text-white/20">{(b as any).guest_email || "no-contact@iom.com"}</span>
                           </div>
                         </td>
-                        <td className="p-8 font-bold text-white uppercase tracking-tight">{(b.events as any)?.title ?? "—"}</td>
-                        <td className="p-8">
+                        <td className="p-10 font-bold text-white uppercase tracking-tight text-balance">{(b.events as any)?.title ?? "—"}</td>
+                        <td className="p-10">
                           {b.is_used ? (
-                            <span className="inline-flex h-8 items-center rounded-lg px-3 bg-white/5 text-[9px] font-black uppercase tracking-widest text-white/20">Finalized</span>
+                            <span className="inline-flex h-10 items-center rounded-xl px-4 bg-white/5 text-[9px] font-black uppercase tracking-widest text-white/20 border border-white/5">Finalized</span>
                           ) : (
-                            <span className="inline-flex h-8 items-center rounded-lg px-3 bg-accent/20 text-[9px] font-black uppercase tracking-widest text-accent">Active Vault</span>
+                            <span className="inline-flex h-10 items-center rounded-xl px-4 bg-accent/10 text-[9px] font-black uppercase tracking-widest text-accent border border-accent/20">Active Vault</span>
                           )}
                         </td>
-                        <td className="p-8 text-right font-display text-lg font-black text-white">KSH {Number(b.total_price).toLocaleString()}</td>
+                        <td className="p-10 text-right font-display text-2xl font-black text-white tracking-tighter">KSH {Number(b.total_price).toLocaleString()}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -334,24 +339,27 @@ export default function AdminDashboard() {
             </div>
           </TabsContent>
 
-          <TabsContent value="verify" className="mt-10">
-            <div className="mx-auto max-w-xl rounded-[4rem] border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-16 backdrop-blur-3xl text-center shadow-2xl">
-               <div className="mb-10 inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-rose-500 text-white shadow-[0_20px_60px_rgba(244,63,94,0.3)]">
-                  <Fingerprint className="h-10 w-10" />
-               </div>
-               <h2 className="font-display text-4xl font-black uppercase tracking-tight text-white mb-4">Gatekeeper Auth</h2>
-               <p className="text-xs font-black uppercase tracking-[0.3em] text-white/30 mb-12">Submit ticket ID for instant blockchain verification</p>
-               
-               <div className="space-y-6">
-                 <Input 
-                   value={verifyCode} 
-                   onChange={(e) => setVerifyCode(e.target.value.toUpperCase())} 
-                   className="h-20 rounded-2xl border-white/5 bg-white/10 text-center font-mono text-2xl font-black text-accent tracking-[0.4em] placeholder:opacity-10" 
-                   placeholder="IOM-XXXXXXXX"
-                 />
-                 <Button size="lg" className="h-20 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-xs hover:bg-accent transition-all" onClick={() => verifyTicket.mutate()} disabled={verifyTicket.isPending}>
-                   {verifyTicket.isPending ? "Auth Sync In Progress..." : "Verify Identity"}
-                 </Button>
+          <TabsContent value="verify" className="mt-10 overflow-hidden">
+            <div className="mx-auto max-w-xl rounded-[3.5rem] sm:rounded-[4.5rem] border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-10 sm:p-20 backdrop-blur-3xl text-center shadow-2xl relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-rose-500/5 blur-[120px] rounded-full" />
+               <div className="relative z-10">
+                 <div className="mb-10 inline-flex h-24 w-24 items-center justify-center rounded-[2rem] bg-rose-500 text-white shadow-[0_30px_70px_rgba(244,63,94,0.4)]">
+                    <Fingerprint className="h-10 w-10" />
+                 </div>
+                 <h2 className="font-display text-4xl sm:text-5xl font-black uppercase tracking-tighter text-white mb-4 leading-none">Gatekeeper Auth</h2>
+                 <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-12 text-balance leading-relaxed">Submit ticket ID for instant blockchain verification</p>
+                 
+                 <div className="space-y-8">
+                   <Input 
+                     value={verifyCode} 
+                     onChange={(e) => setVerifyCode(e.target.value.toUpperCase())} 
+                     className="h-20 sm:h-24 rounded-2xl border-white/5 bg-white/10 text-center font-mono text-2xl sm:text-3xl font-black text-accent tracking-[0.5em] placeholder:opacity-5 transition-all focus:bg-white/20" 
+                     placeholder="IOM-XXXXXXXX"
+                   />
+                   <Button size="lg" className="h-20 sm:h-24 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-[11px] hover:bg-accent hover:scale-[1.02] transition-all shadow-2xl" onClick={() => verifyTicket.mutate()} disabled={verifyTicket.isPending}>
+                     {verifyTicket.isPending ? "Auth Sync In Progress..." : "Verify Identity"}
+                   </Button>
+                 </div>
                </div>
             </div>
           </TabsContent>

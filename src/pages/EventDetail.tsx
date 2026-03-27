@@ -119,10 +119,10 @@ export default function EventDetail() {
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Showcase
           </Button>
 
-          <div className="grid gap-16 lg:grid-cols-12">
-            {/* Immersive Left Content */}
-            <div className="lg:col-span-7 space-y-12">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
+          <div className="grid gap-12 lg:gap-20 lg:grid-cols-12">
+            {/* Immersive Content */}
+            <div className="lg:col-span-7 space-y-10 sm:space-y-16">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden rounded-[2rem] sm:rounded-[3.5rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
                 {event.image_url ? (
                   <img src={event.image_url} alt={event.title} className="h-full w-full object-cover opacity-80" />
                 ) : (
@@ -133,77 +133,77 @@ export default function EventDetail() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                   <span className="rounded-full bg-accent/20 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-accent border border-accent/20">
+              <div className="space-y-8">
+                <div className="flex flex-wrap items-center gap-4">
+                   <span className="rounded-full bg-accent/20 px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent border border-accent/20">
                      {event.category || "Premier Showcase"}
                    </span>
-                   <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
-                     <ShieldCheck className="h-4 w-4 text-purple-500" /> Verified Experience
+                   <div className="flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+                     <ShieldCheck className="h-4.5 w-4.5 text-purple-500" /> Verified Experience
                    </div>
                 </div>
-                <h1 className="font-display text-4xl sm:text-7xl lg:text-8xl font-black tracking-tighter text-white uppercase">
+                <h1 className="font-display text-4xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase text-balance leading-[0.9]">
                   {event.title}
                 </h1>
-                <p className="text-xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl">
+                <p className="text-lg sm:text-xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl text-balance">
                   {event.description || "No specific details provided for this showcase walkthrough."}
                 </p>
               </div>
             </div>
 
             {/* Premium Booking Card */}
-            <div className="lg:col-span-5">
-              <div className="lg:sticky lg:top-32 rounded-[2.5rem] sm:rounded-[4.5rem] border border-white/10 bg-[#0A0A0A]/40 p-5 sm:p-10 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
-                <div className="mb-10 space-y-6">
-                  <div className="flex items-center gap-4 text-sm font-bold text-white/60">
-                    <div className="h-10 w-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5">
-                      <Calendar className="h-5 w-5 text-accent" />
+            <div className="lg:col-span-5 w-full">
+              <div className="lg:sticky lg:top-32 rounded-[2.5rem] sm:rounded-[4.5rem] border border-white/10 bg-white/[0.02] p-6 sm:p-12 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+                <div className="mb-10 space-y-8">
+                  <div className="flex items-center gap-5 text-sm sm:text-base font-bold text-white/60">
+                    <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 flex-shrink-0">
+                      <Calendar className="h-6 w-6 text-accent" />
                     </div>
                     <span>{format(new Date(event.date), "EEEE, MMM dd, yyyy · h:mm a")}</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm font-bold text-white/60">
-                    <div className="h-10 w-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5">
-                      <MapPin className="h-5 w-5 text-rose-500" />
+                  <div className="flex items-center gap-5 text-sm sm:text-base font-bold text-white/60">
+                    <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 flex-shrink-0">
+                      <MapPin className="h-6 w-6 text-rose-500" />
                     </div>
-                    <span>{event.venue ? `${event.venue}, ` : ""}{event.location}</span>
+                    <span className="text-balance">{event.venue ? `${event.venue}, ` : ""}{event.location}</span>
                   </div>
                 </div>
 
-                <div className="mb-10 rounded-[2rem] border border-white/5 bg-white/5 p-8 text-center">
-                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-2">Price Per Pass</p>
-                  <p className="font-display text-5xl font-black text-white">
+                <div className="mb-10 rounded-3xl border border-white/5 bg-white/5 p-8 text-center bg-gradient-to-b from-white/[0.05] to-transparent">
+                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-3">Price Per Pass</p>
+                  <p className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tighter">
                     {Number(event.price) === 0 ? "Complimentary" : `KSH ${Number(event.price).toLocaleString()}`}
                   </p>
                 </div>
 
                 {spotsLeft > 0 ? (
                   <div className="space-y-8">
-                    <div className="grid grid-cols-1 gap-6">
+                    <div className="grid grid-cols-1 gap-8">
                       <div>
-                        <Label htmlFor="guestName" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-3 block">Full Name</Label>
+                        <Label htmlFor="guestName" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-4 block ml-1">Full Name</Label>
                         <Input
                           id="guestName"
                           placeholder="Your Name"
                           value={guestName}
                           onChange={(e) => setGuestName(e.target.value)}
-                          className="h-16 rounded-2xl border-white/5 bg-white/5 font-bold text-white focus-visible:ring-accent"
+                          className="h-16 sm:h-20 rounded-2xl border-white/5 bg-black/40 font-bold text-white focus-visible:ring-accent transition-all"
                         />
                       </div>
                       <div>
-                        <Label htmlFor="guestEmail" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-3 block">Email Address</Label>
+                        <Label htmlFor="guestEmail" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-4 block ml-1">Email Address</Label>
                         <Input
                           id="guestEmail"
                           type="email"
                           placeholder="your@email.com"
                           value={guestEmail}
                           onChange={(e) => setGuestEmail(e.target.value)}
-                          className="h-16 rounded-2xl border-white/5 bg-white/5 font-bold text-white focus-visible:ring-accent"
+                          className="h-16 sm:h-20 rounded-2xl border-white/5 bg-black/40 font-bold text-white focus-visible:ring-accent transition-all"
                         />
                       </div>
                     </div>
 
-                    <div>
-                      <Label htmlFor="qty" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-3 block">Quantity</Label>
+                    <div className="p-1">
+                      <Label htmlFor="qty" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 mb-4 block ml-1">Quantity</Label>
                       <Input
                         id="qty"
                         type="number"
@@ -211,25 +211,28 @@ export default function EventDetail() {
                         max={Math.min(spotsLeft, 10)}
                         value={quantity}
                         onChange={(e) => setQuantity(Math.max(1, Math.min(Math.min(spotsLeft, 10), parseInt(e.target.value) || 1)))}
-                        className="h-16 rounded-2xl border-white/5 bg-white/5 text-lg font-bold text-white focus-visible:ring-accent"
+                        className="h-16 sm:h-20 rounded-2xl border-white/5 bg-black/40 text-xl font-display font-black text-white focus-visible:ring-accent transition-all text-center"
                       />
                     </div>
                     
-                    <Button
-                      size="lg"
-                      className="h-20 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-xs hover:bg-accent hover:scale-[1.02] transition-all shadow-2xl"
-                      onClick={() => bookMutation.mutate()}
-                      disabled={bookMutation.isPending}
-                    >
-                      {bookMutation.isPending ? "Confirming..." : "Get Tickets Now"}
-                    </Button>
-                    
-                    <p className="text-[10px] text-center font-black uppercase tracking-[0.2em] text-white/20">
-                       Zero Signup. Instant Booking.
-                    </p>
+                    <div className="pt-6 space-y-6">
+                      <Button
+                        size="lg"
+                        className="h-20 sm:h-24 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-[11px] hover:bg-accent hover:scale-[1.02] active:scale-95 transition-all shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
+                        onClick={() => bookMutation.mutate()}
+                        disabled={bookMutation.isPending}
+                      >
+                        {bookMutation.isPending ? "Confirming..." : "Secure Experience Now"}
+                      </Button>
+                      
+                      <div className="flex items-center justify-center gap-3 py-4 px-6 rounded-2xl bg-white/5 border border-white/5">
+                        <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30 whitespace-nowrap">Instant Digital Delivery Verified</span>
+                      </div>
+                    </div>
                   </div>
                 ) : (
-                  <Button disabled className="h-20 w-full rounded-2xl border border-white/5 bg-white/5 text-xs font-black uppercase tracking-[0.3em] text-white/20">Sold Out</Button>
+                  <Button disabled className="h-20 w-full rounded-2xl border border-white/5 bg-white/5 text-[10px] font-black uppercase tracking-[0.3em] text-white/20">Access Revoked: Sold Out</Button>
                 )}
               </div>
             </div>
