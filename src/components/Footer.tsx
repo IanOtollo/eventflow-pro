@@ -5,18 +5,18 @@ import { useAuth } from "@/contexts/AuthContext";
 export function Footer() {
   const { isAdmin } = useAuth();
   return (
-    <footer className="border-t border-white/5 bg-[#050505] py-32 relative overflow-hidden">
+    <footer className="border-t border-white/5 bg-[#050505] py-20 sm:py-32 relative overflow-hidden">
       {/* Dynamic background glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10 px-6 sm:px-10">
-        <div className="grid gap-20 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-10">
+        <div className="grid gap-16 sm:gap-20 md:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-8 sm:space-y-10 text-center sm:text-left flex flex-col items-center sm:items-start">
             <Link to="/" className="font-display text-4xl font-black tracking-tighter uppercase text-white group">
               IOM<span className="text-accent italic group-hover:text-accent-cyan transition-colors">Bookings</span>
             </Link>
-            <p className="text-lg font-medium leading-relaxed text-white/40 max-w-xs">
+            <p className="text-base sm:text-lg font-medium leading-relaxed text-white/40 max-w-xs mx-auto sm:mx-0">
               Direct booking, instant verification, and zero filler. The premier destination for large-scale concerts and exclusive gigs.
             </p>
             <div className="flex flex-col gap-6">
@@ -37,18 +37,18 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Marketplace</h4>
+          <div className="text-center sm:text-left">
+            <h4 className="mb-8 sm:mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Marketplace</h4>
             <ul className="space-y-6 text-xs font-black uppercase tracking-[0.2em] text-white/30">
-              <li><Link to="/events" className="transition-all hover:text-accent hover:translate-x-1 inline-block flex items-center gap-2">Browse Gigs <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100" /></Link></li>
+              <li><Link to="/events" className="transition-all hover:text-accent hover:translate-x-1 inline-block flex items-center justify-center sm:justify-start gap-2">Browse Gigs <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100" /></Link></li>
               <li><Link to="#" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Featured Pass</Link></li>
               <li><Link to="#" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Trending Now</Link></li>
               <li><Link to="#" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Partner Events</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Solutions</h4>
+          <div className="text-center sm:text-left">
+            <h4 className="mb-8 sm:mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Solutions</h4>
             <ul className="space-y-6 text-xs font-black uppercase tracking-[0.2em] text-white/30">
               <li><Link to="/signup" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Start Advertising</Link></li>
               <li><Link to="/admin" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Live Analytics</Link></li>
@@ -57,16 +57,16 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="lg:text-right">
-            <div className="h-full flex flex-col justify-between">
+          <div className="text-center lg:text-right">
+            <div className="h-full flex flex-col justify-between items-center lg:items-end">
               <div>
-                <h4 className="mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Paladium Empire</h4>
-                <div className="inline-flex h-20 w-48 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-white/40 lg:ml-auto">
+                <h4 className="mb-8 sm:mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Paladium Empire</h4>
+                <div className="inline-flex h-20 w-48 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-white/40">
                    <Ticket className="h-6 w-6 mr-3 opacity-20" />
                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Direct Ticketing</span>
                 </div>
               </div>
-              <p className="mt-16 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 leading-relaxed">
+              <p className="mt-16 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 leading-relaxed text-center lg:text-right">
                 © 2026 IOMBookings. <Link to={isAdmin ? "/admin" : "/login"} className="hover:text-accent transition-colors underline decoration-white/5 underline-offset-4">Command Center</Link><br/>
                 All rights reserved. Powered by IOMTechs.
               </p>

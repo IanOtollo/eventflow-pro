@@ -67,11 +67,11 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
         </div>
 
         {/* Content Area - Bottom Aligned */}
-        <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 pt-12 bg-gradient-to-t from-black via-black/80 to-transparent">
+        <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7 pt-12 bg-gradient-to-t from-black via-black/80 to-transparent">
           <motion.div 
             className="transition-all duration-500 group-hover:-translate-y-1"
           >
-            <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-white uppercase group-hover:text-accent transition-colors">
+            <h3 className="font-display text-xl font-bold leading-tight tracking-tight text-white uppercase group-hover:text-accent transition-colors line-clamp-2">
               {event.title}
             </h3>
             
@@ -86,10 +86,10 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-4">
-               <span className="text-[8px] font-black uppercase tracking-[0.3em] text-accent/40 group-hover:text-accent transition-colors">View Showcase</span>
-               <div className="h-6 w-6 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all">
-                  <Star className="h-3 w-3" />
+            <div className="mt-6 flex items-center justify-between border-t border-white/5 pt-5 pb-1">
+               <span className="text-[9px] font-black uppercase tracking-[0.3em] text-accent/40 group-hover:text-accent transition-colors">Experience Now</span>
+               <div className="h-8 w-8 rounded-full bg-white/5 flex items-center justify-center text-white/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all shadow-xl shadow-black/40">
+                  <Ticket className="h-4 w-4" />
                </div>
             </div>
           </motion.div>

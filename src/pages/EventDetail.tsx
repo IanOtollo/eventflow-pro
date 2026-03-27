@@ -109,7 +109,7 @@ export default function EventDetail() {
     <div className="flex min-h-screen flex-col bg-[#050505]">
       <Header />
       
-      <main className="flex-1 py-24 px-6 sm:px-10">
+      <main className="flex-1 py-16 sm:py-24 px-6 sm:px-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ export default function EventDetail() {
                      <ShieldCheck className="h-4 w-4 text-purple-500" /> Verified Experience
                    </div>
                 </div>
-                <h1 className="font-display text-4xl font-black tracking-tighter text-white uppercase sm:text-7xl">
+                <h1 className="font-display text-4xl sm:text-7xl lg:text-8xl font-black tracking-tighter text-white uppercase">
                   {event.title}
                 </h1>
                 <p className="text-xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl">
@@ -153,7 +153,7 @@ export default function EventDetail() {
 
             {/* Premium Booking Card */}
             <div className="lg:col-span-5">
-              <div className="sticky top-32 rounded-[2.5rem] sm:rounded-[3.5rem] border border-white/10 bg-[#0A0A0A]/40 p-6 sm:p-10 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+              <div className="lg:sticky lg:top-32 rounded-[2.5rem] sm:rounded-[4.5rem] border border-white/10 bg-[#0A0A0A]/40 p-5 sm:p-10 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
                 <div className="mb-10 space-y-6">
                   <div className="flex items-center gap-4 text-sm font-bold text-white/60">
                     <div className="h-10 w-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5">

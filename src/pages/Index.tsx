@@ -122,7 +122,7 @@ export default function Index() {
       <Header />
 
       {/* Hero: Direct Event Advertisement (Madfun Style) */}
-      <section className="relative w-full h-auto min-h-[950px] flex items-center pt-48 pb-32 overflow-hidden bg-black">
+      <section className="relative w-full h-auto min-h-[850px] sm:min-h-[950px] flex items-center pt-32 sm:pt-48 pb-20 sm:pb-32 overflow-hidden bg-black">
         <div className="absolute inset-0 z-0">
           <motion.img 
             initial={{ scale: 1.1, opacity: 0 }}
@@ -138,7 +138,7 @@ export default function Index() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 blur-[150px] rounded-full mix-blend-screen opacity-50" />
         </div>
 
-        <div className="container relative z-10 w-full px-6 pt-12 pb-10 text-center">
+        <div className="container relative z-10 w-full px-6 pt-12 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -173,15 +173,15 @@ export default function Index() {
       </section>
 
       {/* Discovery Feed: Gigs & Events */}
-      <section className="relative z-10 py-32 px-6 sm:px-10">
+      <section className="relative z-10 py-16 sm:py-32 px-6 sm:px-10">
         <div className="container">
-          <div className="mb-20 flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
+          <div className="mb-12 sm:mb-20 flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
             <div>
               <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/5 bg-white/5 px-4 py-2 backdrop-blur-md">
                 <Flame className="h-4 w-4 text-rose-500" />
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">The Live Feed</span>
               </div>
-              <h2 className="font-display text-6xl font-black tracking-tighter text-white uppercase sm:text-9xl">
+              <h2 className="font-display text-4xl sm:text-6xl font-black tracking-tighter text-white uppercase lg:text-9xl">
                 Upcoming <span className="text-white/10 italic">Gigs</span>
               </h2>
             </div>
@@ -202,14 +202,14 @@ export default function Index() {
       </section>
 
       {/* Travel Section */}
-      <section className="relative z-10 py-32 px-6 sm:px-10 bg-[#080808]">
+      <section className="relative z-10 py-16 sm:py-32 px-6 sm:px-10 bg-[#080808]">
         <div className="container flex flex-col items-end text-right">
-          <div className="mb-20">
+          <div className="mb-12 sm:mb-20">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/5 bg-white/5 px-4 py-2 backdrop-blur-md">
               <Sparkles className="h-4 w-4 text-accent" />
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">Global Voyages</span>
             </div>
-            <h2 className="font-display text-6xl font-black tracking-tighter text-white uppercase sm:text-9xl">
+            <h2 className="font-display text-4xl sm:text-6xl font-black tracking-tighter text-white uppercase lg:text-9xl">
               Premier <span className="text-white/10 italic">Travel</span>
             </h2>
           </div>
@@ -244,14 +244,14 @@ export default function Index() {
       </section>
 
       {/* Staycations Section */}
-      <section className="relative z-10 py-32 px-6 sm:px-10 bg-[#050505]">
+      <section className="relative z-10 py-16 sm:py-32 px-6 sm:px-10 bg-[#050505]">
         <div className="container">
-           <div className="mb-20">
+           <div className="mb-12 sm:mb-20">
             <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/5 bg-white/5 px-4 py-2 backdrop-blur-md">
               <Zap className="h-4 w-4 text-purple-500" />
               <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">Elite Retreats</span>
             </div>
-            <h2 className="font-display text-6xl font-black tracking-tighter text-white uppercase sm:text-9xl">
+            <h2 className="font-display text-4xl sm:text-6xl font-black tracking-tighter text-white uppercase lg:text-9xl">
               Luxury <span className="text-white/10 italic">Staycations</span>
             </h2>
           </div>
@@ -282,26 +282,26 @@ export default function Index() {
       </section>
 
       {/* Organizer Pathway (Subtle) */}
-      <section className="relative overflow-hidden py-40 px-6 sm:px-10 border-t border-white/5">
+      <section className="relative overflow-hidden py-24 sm:py-40 px-6 sm:px-10 border-t border-white/5">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-6xl rounded-[4rem] border border-white/5 bg-[#080808] p-16 backdrop-blur-3xl md:p-32 text-center relative overflow-hidden group shadow-2xl">
+          <div className="mx-auto max-w-6xl rounded-[2.5rem] sm:rounded-[4rem] border border-white/5 bg-[#080808] p-10 sm:p-16 md:p-32 text-center relative overflow-hidden group shadow-2xl">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/5 blur-[150px] rounded-full" />
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-5xl font-black leading-[0.9] tracking-tighter text-white uppercase sm:text-[7.5rem]">
+              <h2 className="font-display text-3xl sm:text-6xl lg:text-[7.5rem] font-black leading-[0.9] tracking-tighter text-white uppercase">
                 Elevate Your <span className="text-accent italic">Brand.</span>
               </h2>
-              <p className="mt-12 text-xl font-medium text-white/40 max-w-3xl mx-auto leading-relaxed">
+              <p className="mt-8 sm:mt-12 text-base sm:text-xl font-medium text-white/40 max-w-3xl mx-auto leading-relaxed">
                 Madfun competitors are redefined. Advertise your next gig on IOMBookings and reach the elite audience.
               </p>
-              <div className="mt-20 flex flex-wrap justify-center gap-8">
-                <Button size="lg" className="h-24 rounded-2xl bg-accent px-16 text-[10px] font-black uppercase tracking-[0.4em] text-accent-foreground hover:scale-105 transition-transform" asChild>
+              <div className="mt-12 sm:mt-20 flex flex-wrap justify-center gap-6 sm:gap-8">
+                <Button size="lg" className="h-20 sm:h-24 w-full sm:w-auto rounded-2xl bg-accent px-12 sm:px-16 text-[10px] font-black uppercase tracking-[0.4em] text-accent-foreground hover:scale-105 transition-transform" asChild>
                    <Link to="/signup">Start Advertising</Link>
                 </Button>
-                <Link to="/pricing" className="flex h-24 items-center justify-center rounded-2xl border border-white/10 px-12 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-all bg-white/5 backdrop-blur-xl">
+                <Link to="/pricing" className="flex h-20 sm:h-24 items-center justify-center w-full sm:w-auto rounded-2xl border border-white/10 px-10 sm:px-12 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 hover:text-white transition-all bg-white/5 backdrop-blur-xl">
                   View Rates
                 </Link>
               </div>

@@ -83,12 +83,12 @@ export function Header() {
              </button>
           </div>
 
-          <nav className="flex flex-col gap-8">
-            <Link to="/" onClick={() => setMobileOpen(false)} className="font-display text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Shows</Link>
-            <Link to="/travel" onClick={() => setMobileOpen(false)} className="font-display text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Travel</Link>
-            <Link to="/staycations" onClick={() => setMobileOpen(false)} className="font-display text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Staycations</Link>
-            <Link to="/advertise" onClick={() => setMobileOpen(false)} className="font-display text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Advertise</Link>
-            {isAdmin && <Link to="/admin" onClick={() => setMobileOpen(false)} className="font-display text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors italic">Insights</Link>}
+          <nav className="flex flex-col gap-6 sm:gap-8">
+            <Link to="/" onClick={() => setMobileOpen(false)} className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Shows</Link>
+            <Link to="/travel" onClick={() => setMobileOpen(false)} className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Travel</Link>
+            <Link to="/staycations" onClick={() => setMobileOpen(false)} className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Staycations</Link>
+            <Link to="/advertise" onClick={() => setMobileOpen(false)} className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors">Advertise</Link>
+            {isAdmin && <Link to="/admin" onClick={() => setMobileOpen(false)} className="font-display text-3xl sm:text-5xl font-black text-white uppercase tracking-tighter hover:text-accent transition-colors italic">Insights</Link>}
           </nav>
 
           <div className="mt-auto pt-10 border-t border-white/5 space-y-6 text-center">
