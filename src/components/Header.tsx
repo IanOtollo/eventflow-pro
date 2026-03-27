@@ -51,9 +51,9 @@ export function Header() {
           )}
         </nav>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="hidden lg:block h-4 w-px bg-white/10 mx-2" />
-          <Button size="sm" className="bg-accent text-accent-foreground font-black uppercase tracking-widest hover:scale-105 transition-transform rounded-full px-8 shadow-xl shadow-accent/20 h-11" asChild>
+          <Button size="sm" className="bg-accent text-accent-foreground font-black uppercase tracking-widest hover:scale-105 transition-transform rounded-full px-6 sm:px-8 shadow-xl shadow-accent/20 h-10 sm:h-11 text-[9px] sm:text-[10px]" asChild>
             <Link to="/advertise">Go Live</Link>
           </Button>
           

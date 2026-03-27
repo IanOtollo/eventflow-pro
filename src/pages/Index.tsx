@@ -138,27 +138,27 @@ export default function Index() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/10 blur-[150px] rounded-full mix-blend-screen opacity-50" />
         </div>
 
-        <div className="container relative z-10 w-full px-4 sm:px-10 pt-16 pb-12 text-center">
+        <div className="container relative z-10 w-full px-6 pt-12 pb-10 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-6 py-2 backdrop-blur-2xl mb-4">
-               <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-               <span className="text-[9px] font-black uppercase tracking-[0.5em] text-white">XPERIENCE FUN THE FUN WAY</span>
+            <div className="inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-5 py-2 backdrop-blur-2xl mb-4">
+               <div className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+               <span className="text-[8px] font-black uppercase tracking-[0.4em] text-white">Xperience Fun The Fun Way</span>
             </div>
-            <h1 className="font-display text-4xl font-black tracking-tighter text-white uppercase sm:text-6xl lg:text-7xl max-w-4xl mx-auto leading-[0.9]">
+            <h1 className="font-display text-3xl font-black tracking-tighter text-white uppercase sm:text-6xl lg:text-7xl max-w-4xl mx-auto leading-[0.95]">
                Discover <span className="text-accent italic">Elite</span> Events
             </h1>
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-2"
           >
             {dailySpotlight.map((event, i) => (
               <div key={`${event.id}-${i}`} className="relative group perspective-1000">

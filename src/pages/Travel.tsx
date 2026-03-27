@@ -38,30 +38,30 @@ export default function Travel() {
       <Header />
       
       <main className="flex-1">
-        <section className="relative overflow-hidden pt-40 pb-20 px-6">
+        <section className="relative overflow-hidden pt-24 sm:pt-40 pb-16 px-6">
           <div className="container relative z-10 text-center">
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-6 py-2.5 backdrop-blur-2xl">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-5 py-2 backdrop-blur-2xl">
                <Plane className="h-4 w-4 text-accent animate-bounce" />
                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white">Global Voyages</span>
             </div>
-            <h1 className="font-display text-7xl font-black leading-[0.8] tracking-tighter text-white uppercase sm:text-9xl mb-8">
-              Premier <span className="text-accent italic">Travel</span>
+            <h1 className="font-display text-4xl font-black leading-[0.8] tracking-tighter text-white uppercase sm:text-9xl mb-8">
+               Premier <span className="text-accent italic">Travel</span>
             </h1>
-            <p className="mt-8 text-xl font-medium text-white/40 max-w-2xl mx-auto leading-relaxed uppercase tracking-widest text-[10px]">
-              The sky is no longer the limit. Exclusive flight and luxury accommodation bundles curated for the elite explorer.
+            <p className="mt-8 text-[11px] sm:text-xl font-medium text-white/40 max-w-2xl mx-auto leading-relaxed uppercase tracking-widest">
+               The sky is no longer the limit. Exclusive flight and luxury accommodation bundles curated for the elite explorer.
             </p>
           </div>
         </section>
 
-        <section className="py-20 px-6">
-          <div className="container grid gap-12 lg:grid-cols-3">
+        <section className="py-16 px-6">
+          <div className="container grid gap-10 sm:gap-12 lg:grid-cols-3">
              {TRAVEL_PACKAGES.map((pkg, i) => (
                <motion.div 
                  key={pkg.id}
                  initial={{ opacity: 0, y: 30 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ delay: i * 0.1 }}
-                 className="group relative h-[600px] overflow-hidden rounded-[3rem] border border-white/5 bg-[#080808]"
+                 className="group relative h-[500px] sm:h-[600px] overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-[#080808]"
                >
                  <img src={pkg.image} alt={pkg.title} className="h-full w-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />

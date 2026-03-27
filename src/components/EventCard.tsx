@@ -20,7 +20,7 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
     >
       <Link
         to={`/events/${event.id}`}
-        className="group relative block aspect-[16/20] overflow-hidden rounded-[3.5rem] bg-[#0A0A0A] border border-white/5 shadow-2xl transition-all duration-700 hover:border-accent/40 hover:shadow-accent/20 hover:-translate-y-2"
+        className="group relative block aspect-[16/20] overflow-hidden rounded-[2rem] sm:rounded-[3.5rem] bg-[#0A0A0A] border border-white/5 shadow-2xl transition-all duration-700 hover:border-accent/40 hover:shadow-accent/20 hover:-translate-y-2"
       >
         {/* Dynamic Background Image */}
         <div className="absolute inset-0 z-0">
@@ -40,7 +40,7 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
         </div>
 
         {/* Top Badges */}
-        <div className="absolute top-6 left-6 right-6 z-10 flex items-start justify-between">
+        <div className="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 z-10 flex items-start justify-between">
           <div className="flex flex-col gap-2">
             {event.category && (
               <span className="inline-flex rounded-full bg-accent px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-accent-foreground shadow-lg">
@@ -67,7 +67,7 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
         </div>
 
         {/* Content Area - Bottom Aligned */}
-        <div className="absolute inset-x-0 bottom-0 z-10 p-6 pt-12 bg-gradient-to-t from-black via-black/80 to-transparent">
+        <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6 pt-12 bg-gradient-to-t from-black via-black/80 to-transparent">
           <motion.div 
             className="transition-all duration-500 group-hover:-translate-y-1"
           >

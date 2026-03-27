@@ -38,34 +38,34 @@ export default function Staycations() {
       <Header />
       
       <main className="flex-1">
-        <section className="relative overflow-hidden pt-40 pb-20 px-6">
+        <section className="relative overflow-hidden pt-24 sm:pt-40 pb-16 px-6">
           <div className="container relative z-10 text-center">
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-6 py-2.5 backdrop-blur-2xl">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-5 py-2 backdrop-blur-2xl">
                <Home className="h-4 w-4 text-accent animate-pulse" />
                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white">Elite Retreats</span>
             </div>
-            <h1 className="font-display text-7xl font-black leading-[0.8] tracking-tighter text-white uppercase sm:text-9xl mb-8">
-              Luxury <span className="text-accent italic">Staycations</span>
+            <h1 className="font-display text-4xl font-black leading-[0.8] tracking-tighter text-white uppercase sm:text-9xl mb-8">
+               Luxury <span className="text-accent italic">Staycations</span>
             </h1>
-            <p className="mt-8 text-xl font-medium text-white/40 max-w-2xl mx-auto leading-relaxed uppercase tracking-widest text-[10px]">
-              Escape the mundane. Discover Kenya's most architectural and hidden gems for the perfect weekend reset.
+            <p className="mt-8 text-[11px] sm:text-xl font-medium text-white/40 max-w-2xl mx-auto leading-relaxed uppercase tracking-widest">
+               Escape the mundane. Discover Kenya's most architectural and hidden gems for the perfect weekend reset.
             </p>
           </div>
         </section>
 
-        <section className="py-20 px-6">
-          <div className="container grid gap-8 md:grid-cols-2">
+        <section className="py-16 px-6">
+          <div className="container grid gap-10 md:grid-cols-2">
              {STAYCATIONS.map((stay, i) => (
                <motion.div 
                  key={stay.id}
                  initial={{ opacity: 0, scale: 0.98 }}
                  animate={{ opacity: 1, scale: 1 }}
                  transition={{ delay: i * 0.1 }}
-                 className="group relative h-[500px] overflow-hidden rounded-[4rem] border border-white/5 bg-[#080808]"
+                 className="group relative h-[450px] sm:h-[500px] overflow-hidden rounded-[2rem] sm:rounded-[4rem] border border-white/5 bg-[#080808]"
                >
                  <img src={stay.image} alt={stay.title} className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-75" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                 <div className="absolute inset-x-0 bottom-0 p-12">
+                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
                     <div className="flex gap-2 mb-6">
                        {stay.tags.map(tag => (
                          <span key={tag} className="text-[8px] font-black uppercase tracking-widest text-accent/60 px-3 py-1 rounded-full border border-accent/20">{tag}</span>

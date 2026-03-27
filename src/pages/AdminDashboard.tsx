@@ -251,12 +251,14 @@ export default function AdminDashboard() {
         </div>
 
         <Tabs defaultValue="events" className="w-full">
-          <TabsList className="h-16 w-full max-w-2xl bg-white/5 rounded-2xl p-2 gap-2">
-            <TabsTrigger value="events" className="flex-1 rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black">Showcases</TabsTrigger>
-            <TabsTrigger value="bookings" className="flex-1 rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black">Velocity</TabsTrigger>
-            <TabsTrigger value="users" className="flex-1 rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black">Clients</TabsTrigger>
-            <TabsTrigger value="verify" className="flex-1 rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-rose-500 data-[state=active]:text-white">Verify</TabsTrigger>
-          </TabsList>
+          <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
+            <TabsList className="h-16 w-max min-w-full sm:w-full sm:max-w-2xl bg-white/5 rounded-2xl p-2 gap-2">
+              <TabsTrigger value="events" className="flex-1 min-w-[100px] rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black">Showcases</TabsTrigger>
+              <TabsTrigger value="bookings" className="flex-1 min-w-[100px] rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black">Velocity</TabsTrigger>
+              <TabsTrigger value="users" className="flex-1 min-w-[100px] rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-white data-[state=active]:text-black">Clients</TabsTrigger>
+              <TabsTrigger value="verify" className="flex-1 min-w-[100px] rounded-xl text-[10px] font-black uppercase tracking-widest data-[state=active]:bg-rose-500 data-[state=active]:text-white">Verify</TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="events" className="mt-10 overflow-hidden">
             <div className="grid gap-6">
@@ -266,24 +268,26 @@ export default function AdminDashboard() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="flex items-center justify-between rounded-3xl border border-white/5 bg-black/40 p-6 hover:border-accent/30 transition-all group"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between rounded-2xl sm:rounded-3xl border border-white/5 bg-black/40 p-5 sm:p-6 hover:border-accent/30 transition-all group gap-6"
                 >
-                  <div className="flex items-center gap-6">
-                    <div className="h-16 w-16 overflow-hidden rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:ring-accent transition-all">
-                      {event.image_url ? <img src={event.image_url} alt="" className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" /> : <Calendar className="h-full w-full p-4 text-white/10" />}
+                  <div className="flex items-center gap-4 sm:gap-6">
+                    <div className="h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl sm:rounded-2xl bg-white/5 ring-1 ring-white/10 group-hover:ring-accent transition-all shrink-0">
+                      {event.image_url ? <img src={event.image_url} alt="" className="h-full w-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" /> : <Calendar className="h-full w-full p-3 sm:p-4 text-white/10" />}
                     </div>
                     <div>
-                      <h4 className="font-display text-xl font-black text-white uppercase tracking-tight">{event.title}</h4>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">{format(new Date(event.date), "MMM dd, yyyy")} · {event.location}</p>
+                      <h4 className="font-display text-lg sm:text-xl font-black text-white uppercase tracking-tight line-clamp-1">{event.title}</h4>
+                      <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-white/30">{format(new Date(event.date), "MMM dd, yyyy")} · {event.location}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="text-right mr-8 hidden sm:block">
+                  <div className="flex items-center justify-between w-full sm:w-auto gap-4 border-t border-white/5 pt-4 sm:border-0 sm:pt-0">
+                    <div className="text-left sm:text-right sm:mr-8">
                       <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mb-1">Pass Revenue</p>
-                      <p className="font-display text-lg font-black text-accent">KSH {(event.price * 5).toLocaleString()}</p>
+                      <p className="font-display text-base sm:text-lg font-black text-accent">KSH {(event.price * 5).toLocaleString()}</p>
                     </div>
-                    <Button variant="ghost" size="icon" className="h-12 w-12 rounded-xl hover:bg-white/5 text-white/20 hover:text-white" onClick={() => openEdit(event)}><Edit className="h-5 w-5" /></Button>
-                    <Button variant="ghost" size="icon" className="h-12 w-12 rounded-xl hover:bg-destructive/10 text-destructive/20 hover:text-destructive" onClick={() => { if (confirm("Terminate this showcase asset?")) deleteEvent.mutate(event.id); }}><Trash2 className="h-5 w-5" /></Button>
+                    <div className="flex items-center gap-2">
+                      <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl hover:bg-white/5 text-white/20 hover:text-white" onClick={() => openEdit(event)}><Edit className="h-4 w-4 sm:h-5 sm:w-5" /></Button>
+                      <Button variant="ghost" size="icon" className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl hover:bg-destructive/10 text-destructive/20 hover:text-destructive" onClick={() => { if (confirm("Terminate this showcase asset?")) deleteEvent.mutate(event.id); }}><Trash2 className="h-4 w-4 sm:h-5 sm:w-5" /></Button>
+                    </div>
                   </div>
                 </motion.div>
               ))}

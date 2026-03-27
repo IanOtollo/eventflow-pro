@@ -46,7 +46,7 @@ export default function Login() {
           <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" /> Back to Marketplace
         </Link>
 
-        <div className="rounded-[3rem] border border-white/10 bg-[#0A0A0A]/40 p-12 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+        <div className="rounded-[2rem] sm:rounded-[3rem] border border-white/10 bg-[#0A0A0A]/40 p-6 sm:p-12 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
           <div className="mb-10 text-center">
             <Link to="/" className="mb-6 inline-flex items-center gap-4 font-display text-3xl font-black text-white uppercase tracking-tighter">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-accent-foreground shadow-[0_0_20px_rgba(16,185,129,0.3)]">

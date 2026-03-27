@@ -117,7 +117,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
         </header>
 
         {/* Content Container */}
-        <div className="flex-1 p-6 sm:p-10">
+        <div className="flex-1 p-4 sm:p-10">
           <div className="max-w-[1400px] mx-auto">
             {children}
           </div>

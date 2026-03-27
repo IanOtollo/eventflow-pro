@@ -122,7 +122,7 @@ export default function EventDetail() {
           <div className="grid gap-16 lg:grid-cols-12">
             {/* Immersive Left Content */}
             <div className="lg:col-span-7 space-y-12">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-[3rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
+              <div className="relative aspect-[16/9] overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
                 {event.image_url ? (
                   <img src={event.image_url} alt={event.title} className="h-full w-full object-cover opacity-80" />
                 ) : (
@@ -142,7 +142,7 @@ export default function EventDetail() {
                      <ShieldCheck className="h-4 w-4 text-purple-500" /> Verified Experience
                    </div>
                 </div>
-                <h1 className="font-display text-5xl font-black tracking-tighter text-white uppercase sm:text-7xl">
+                <h1 className="font-display text-4xl font-black tracking-tighter text-white uppercase sm:text-7xl">
                   {event.title}
                 </h1>
                 <p className="text-xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl">
@@ -153,7 +153,7 @@ export default function EventDetail() {
 
             {/* Premium Booking Card */}
             <div className="lg:col-span-5">
-              <div className="sticky top-32 rounded-[3.5rem] border border-white/10 bg-[#0A0A0A]/40 p-10 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+              <div className="sticky top-32 rounded-[2.5rem] sm:rounded-[3.5rem] border border-white/10 bg-[#0A0A0A]/40 p-6 sm:p-10 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
                 <div className="mb-10 space-y-6">
                   <div className="flex items-center gap-4 text-sm font-bold text-white/60">
                     <div className="h-10 w-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5">
