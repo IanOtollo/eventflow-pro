@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -30,6 +31,7 @@ const App = () => (
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>
+        <Analytics />
       </TooltipProvider>
     </AuthProvider>
   </QueryClientProvider>
