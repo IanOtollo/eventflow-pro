@@ -19,6 +19,10 @@ import Travel from "./pages/Travel";
 import Staycations from "./pages/Staycations";
 import Pricing from "./pages/Pricing";
 import Legal from "./pages/Legal";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import CookiePolicy from "./pages/CookiePolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +61,10 @@ const AppRoutes = () => {
           <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/legal" element={<Legal />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/advertise" element={<Advertise />} />
           <Route path="/travel" element={<Travel />} />
           <Route path="/staycations" element={<Staycations />} />

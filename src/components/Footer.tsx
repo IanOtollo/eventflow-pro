@@ -1,4 +1,4 @@
-import { Ticket, LayoutDashboard, Mail, Phone, ExternalLink } from "lucide-react";
+import { Mail, Phone, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -53,18 +53,20 @@ export function Footer() {
               <li><Link to="/signup" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Start Advertising</Link></li>
               <li><Link to="/admin" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Live Analytics</Link></li>
               <li><Link to="/advertise" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">POS Systems</Link></li>
-              <li><Link to="/legal" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Privacy & Terms</Link></li>
+              <li><Link to="/pricing" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Pricing</Link></li>
             </ul>
           </div>
 
           <div className="text-center lg:text-right">
             <div className="h-full flex flex-col justify-between items-center lg:items-end">
               <div>
-                <h4 className="mb-8 sm:mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Paladium Empire</h4>
-                <div className="inline-flex h-20 w-48 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-white/40">
-                   <Ticket className="h-6 w-6 mr-3 opacity-20" />
-                   <span className="text-[10px] font-black uppercase tracking-[0.3em]">Direct Ticketing</span>
-                </div>
+                <h4 className="mb-8 sm:mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Legal</h4>
+                <ul className="space-y-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+                  <li><Link to="/privacy-policy" className="transition-all hover:text-accent">Privacy Policy</Link></li>
+                  <li><Link to="/terms-and-conditions" className="transition-all hover:text-accent">Terms & Conditions</Link></li>
+                  <li><Link to="/cookie-policy" className="transition-all hover:text-accent">Cookie Policy</Link></li>
+                  <li><Link to="/refund-policy" className="transition-all hover:text-accent">Refund Policy</Link></li>
+                </ul>
               </div>
               <p className="mt-16 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 leading-relaxed text-center lg:text-right">
                 © 2026 IOMBookings. <Link to={isAdmin ? "/admin" : "/login"} className="hover:text-accent transition-colors underline decoration-white/5 underline-offset-4">Command Center</Link><br/>
