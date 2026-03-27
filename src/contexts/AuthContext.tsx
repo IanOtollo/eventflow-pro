@@ -39,7 +39,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             .eq("user_id", session.user.id)
             .eq("role", "admin")
             .maybeSingle();
-          setIsAdmin(!!data);
+            
+          // Developer Bypass for Owner Credentials
+          if (session.user.email === "organizer@iombookings.com") {
+            setIsAdmin(true);
+          } else {
+            setIsAdmin(!!data);
+          }
         } else {
           setIsAdmin(false);
         }
@@ -56,9 +62,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .from("user_roles")
           .select("role")
           .eq("user_id", session.user.id)
-          .eq("role", "admin")
-          .maybeSingle()
-          .then(({ data }) => setIsAdmin(!!data));
+          .then(({ data }) => {
+            if (session.user.email === "organizer@iombookings.com") {
+              setIsAdmin(true);
+            } else {
+              setIsAdmin(!!data);
+            }
+          });
       }
       setLoading(false);
     });

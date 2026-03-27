@@ -27,6 +27,10 @@
     --accent: 160 84% 39%;
     --accent-foreground: 0 0% 100%;
 
+    --accent-cyan: 190 90% 50%;
+    --accent-purple: 270 90% 60%;
+    --accent-rose: 340 90% 60%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
@@ -47,7 +51,8 @@
 
     /* Custom tokens */
     --gradient-hero: linear-gradient(135deg, hsl(220 70% 14%), hsl(220 60% 22%));
-    --gradient-accent: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 70% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 84% 39%), hsl(190 90% 50%));
+    --gradient-vibrant: linear-gradient(135deg, hsl(270 90% 60%), hsl(340 90% 60%));
     --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
     --shadow-card-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     --shadow-elevated: 0 20px 50px -12px rgba(0, 0, 0, 0.12);
@@ -67,6 +72,9 @@
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
     --accent: 160 84% 39%;
+    --accent-cyan: 190 90% 50%;
+    --accent-purple: 270 90% 60%;
+    --accent-rose: 340 90% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
@@ -97,8 +105,16 @@
     background-image: var(--gradient-accent);
   }
 
+  @keyframes gradient-xy {
+    0%   { background-position: 0% 0%; }
+    50%  { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
   .bg-hero {
-    background: var(--gradient-hero);
+    background: linear-gradient(-45deg, hsl(220 70% 10%), hsl(220 60% 16%), hsl(160 84% 20%), hsl(220 70% 14%));
+    background-size: 400% 400%;
+    animation: gradient-xy 15s ease infinite;
   }
 
   .shadow-card {
@@ -111,5 +127,9 @@
 
   .shadow-elevated {
     box-shadow: var(--shadow-elevated);
+  }
+
+  .glass-panel {
+    @apply bg-black/75 backdrop-blur-[40px] border border-white/5 shadow-elevated;
   }
 }

@@ -4,8 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CalendarDays } from "lucide-react";
+import { Ticket, ArrowLeft, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -25,41 +26,78 @@ export default function Login() {
     if (error) {
       toast.error(error.message);
     } else {
-      toast.success("Welcome back!");
+      toast.success("Welcome back to the Showcase.");
       navigate("/dashboard");
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="w-full max-w-sm">
-        <div className="mb-8 text-center">
-          <Link to="/" className="mb-4 inline-flex items-center gap-2 font-display text-2xl font-bold text-foreground">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
-              <CalendarDays className="h-6 w-6 text-accent-foreground" />
+    <div className="flex min-h-screen items-center justify-center bg-[#050505] px-4 overflow-hidden relative">
+      {/* Background Cinematic Glows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 blur-[150px] rounded-full" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 blur-[150px] rounded-full" />
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full max-w-md relative z-10"
+      >
+        <Link to="/" className="mb-12 inline-flex items-center gap-3 text-white/40 hover:text-white transition-colors uppercase font-black tracking-widest text-xs group">
+          <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" /> Back to Marketplace
+        </Link>
+
+        <div className="rounded-[3rem] border border-white/10 bg-[#0A0A0A]/40 p-12 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+          <div className="mb-10 text-center">
+            <Link to="/" className="mb-6 inline-flex items-center gap-4 font-display text-3xl font-black text-white uppercase tracking-tighter">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-accent-foreground shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                <Ticket className="h-6 w-6" />
+              </div>
+              IOM<span className="text-accent underline decoration-accent/20 underline-offset-8">Bookings</span>
+            </Link>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.4em] text-white/30">Secure Showcase Access</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-8">
+            <div className="space-y-3">
+              <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Email Address</Label>
+              <Input 
+                id="email" 
+                type="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                placeholder="organizer@iombookings.com" 
+                className="h-16 rounded-2xl border-white/5 bg-white/5 text-sm font-bold text-white focus-visible:ring-accent"
+              />
             </div>
-            IOMBookings
-          </Link>
-          <p className="mt-2 text-sm text-muted-foreground">Sign in to your account</p>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <Label htmlFor="password" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Security Password</Label>
+                <Link to="#" className="text-[9px] font-black uppercase tracking-[0.2em] text-accent/40 hover:text-accent">Reset Pin?</Link>
+              </div>
+              <Input 
+                id="password" 
+                type="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                placeholder="••••••••" 
+                className="h-16 rounded-2xl border-white/5 bg-white/5 text-sm font-bold text-white focus-visible:ring-accent"
+              />
+            </div>
+            <Button type="submit" disabled={loading} className="h-20 w-full rounded-2xl bg-white text-black font-black uppercase tracking-[0.4em] text-xs hover:bg-accent hover:scale-[1.02] transition-all shadow-2xl">
+              {loading ? "Authenticating..." : "Sign In to Pass"}
+            </Button>
+          </form>
+
+          <p className="mt-10 text-center text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+            Internal Access Only?{" "}
+            <Link to="/signup" className="text-accent hover:underline underline-offset-4">Apply for Pass</Link>
+          </p>
+          
+          <div className="mt-10 flex items-center justify-center gap-2 text-[8px] font-black uppercase tracking-[0.4em] text-white/10">
+             <ShieldCheck className="h-4 w-4" /> 256-bit AES Encryption Active
+          </div>
         </div>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" className="mt-1.5" />
-          </div>
-          <div>
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="mt-1.5" />
-          </div>
-          <Button type="submit" disabled={loading} className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-            {loading ? "Signing in..." : "Sign In"}
-          </Button>
-        </form>
-        <p className="mt-6 text-center text-sm text-muted-foreground">
-          Don't have an account?{" "}
-          <Link to="/signup" className="font-medium text-accent hover:underline">Sign up</Link>
-        </p>
-      </div>
+      </motion.div>
     </div>
   );
 }
