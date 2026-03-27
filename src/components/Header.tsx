@@ -22,44 +22,49 @@ export function Header() {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="sticky top-0 z-50 glass-panel border-b-0"
     >
-      <div className="container flex h-24 items-center justify-between">
-        <Link to="/" className="flex items-center gap-4 font-display text-2xl font-black text-white group">
-          <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-accent text-accent-foreground shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-             <Ticket className="h-5 w-5" />
+      <div className="container flex h-20 sm:h-24 lg:h-32 items-center justify-between px-6 sm:px-10">
+        <Link to="/" className="flex items-center gap-4 font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white group">
+          <div className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-accent text-accent-foreground shadow-[0_0_30px_rgba(16,185,129,0.4)] transform group-hover:scale-110 transition-transform">
+             <Ticket className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8" />
           </div>
-          <span className="tracking-tighter uppercase">IOM<span className="text-accent underline decoration-accent/20 underline-offset-8">Bookings</span></span>
+          <span className="tracking-tighter uppercase sm:block hidden">IOM<span className="text-accent underline decoration-accent/20 underline-offset-8">Bookings</span></span>
+          <span className="tracking-tighter uppercase sm:hidden text-2xl">IOM<span className="text-accent underline decoration-accent/20 underline-offset-4">B.</span></span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex flex-1 items-center justify-center gap-1">
-          <Link to="/" className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
+        <nav className="hidden lg:flex flex-1 items-center justify-center gap-2">
+          <Link to="/" className="px-6 py-3 text-[12px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
             Shows
           </Link>
-          <Link to="/travel" className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
+          <Link to="/travel" className="px-6 py-3 text-[12px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
             Travel
           </Link>
-          <Link to="/staycations" className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
+          <Link to="/staycations" className="px-6 py-3 text-[12px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
             Staycations
           </Link>
-          <Link to="/advertise" className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
+          <Link to="/advertise" className="px-6 py-3 text-[12px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
             Advertise
           </Link>
           {isAdmin && (
-            <Link to="/admin" className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
+            <Link to="/admin" className="px-6 py-3 text-[12px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
               Insights
             </Link>
           )}
         </nav>
         
-        <div className="flex items-center gap-3">
-          <div className="hidden lg:block h-4 w-px bg-white/10 mx-2" />
-          <Button size="sm" className="bg-accent text-accent-foreground font-black uppercase tracking-widest hover:scale-105 transition-transform rounded-full px-6 sm:px-8 shadow-xl shadow-accent/20 h-10 sm:h-11 text-[9px] sm:text-[10px]" asChild>
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:block h-6 w-px bg-white/10 mx-4" />
+          <Button size="lg" className="hidden sm:inline-flex bg-accent text-accent-foreground font-black uppercase tracking-widest hover:scale-105 transition-transform rounded-full px-10 shadow-2xl shadow-accent/20 h-14 text-[11px]" asChild>
             <Link to="/advertise">Go Live</Link>
           </Button>
           
-          {/* Mobile toggle */}
-          <button className="lg:hidden h-12 w-12 flex items-center justify-center rounded-xl bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {/* High-Impact Mobile Menu Toggle */}
+          <button 
+            className="lg:hidden h-16 w-16 sm:h-20 sm:w-20 flex items-center justify-center rounded-2xl bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]" 
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle Menu"
+          >
+            {mobileOpen ? <X className="h-8 w-8 sm:h-10 sm:w-10" /> : <Menu className="h-8 w-8 sm:h-10 sm:w-10" />}
           </button>
         </div>
       </div>

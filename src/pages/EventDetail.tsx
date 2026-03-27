@@ -115,37 +115,37 @@ export default function EventDetail() {
           animate={{ opacity: 1, y: 0 }}
           className="container max-w-7xl"
         >
-          <Button variant="ghost" size="sm" className="mb-12 text-white/40 hover:text-white uppercase font-black tracking-widest" onClick={() => navigate(-1)}>
-            <ArrowLeft className="mr-2 h-4 w-4" /> Back to Showcase
+          <Button variant="ghost" size="lg" className="mb-12 h-16 px-8 rounded-2xl border border-white/5 bg-white/5 text-white/60 hover:text-white uppercase font-black tracking-widest text-[11px]" onClick={() => navigate(-1)}>
+            <ArrowLeft className="mr-3 h-5 w-5" /> Back to Showcase
           </Button>
 
-          <div className="grid gap-12 lg:gap-20 lg:grid-cols-12">
+          <div className="grid gap-16 lg:gap-20 lg:grid-cols-12">
             {/* Immersive Content */}
-            <div className="lg:col-span-7 space-y-10 sm:space-y-16">
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden rounded-[2rem] sm:rounded-[3.5rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
+            <div className="lg:col-span-7 space-y-12 sm:space-y-16">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden rounded-[2.5rem] sm:rounded-[4rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
                 {event.image_url ? (
                   <img src={event.image_url} alt={event.title} className="h-full w-full object-cover opacity-80" />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">
-                    <Ticket className="h-20 w-20 text-white/5" />
+                    <Ticket className="h-24 w-24 text-white/5" />
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
               </div>
 
-              <div className="space-y-8">
-                <div className="flex flex-wrap items-center gap-4">
-                   <span className="rounded-full bg-accent/20 px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-accent border border-accent/20">
+              <div className="space-y-10">
+                <div className="flex flex-wrap items-center gap-5">
+                   <span className="rounded-full bg-accent px-6 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] text-accent-foreground border border-accent/20 shadow-xl">
                      {event.category || "Premier Showcase"}
                    </span>
-                   <div className="flex items-center gap-2.5 text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
-                     <ShieldCheck className="h-4.5 w-4.5 text-purple-500" /> Verified Experience
+                   <div className="flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.2em] text-white/30">
+                     <ShieldCheck className="h-5 w-5 text-purple-500" /> Verified Experience
                    </div>
                 </div>
-                <h1 className="font-display text-4xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase text-balance leading-[0.9]">
+                <h1 className="font-display text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase text-balance leading-[0.9]">
                   {event.title}
                 </h1>
-                <p className="text-lg sm:text-xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl text-balance">
+                <p className="text-xl sm:text-2xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl text-balance">
                   {event.description || "No specific details provided for this showcase walkthrough."}
                 </p>
               </div>
@@ -153,25 +153,25 @@ export default function EventDetail() {
 
             {/* Premium Booking Card */}
             <div className="lg:col-span-5 w-full">
-              <div className="lg:sticky lg:top-32 rounded-[2.5rem] sm:rounded-[4.5rem] border border-white/10 bg-white/[0.02] p-6 sm:p-12 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
-                <div className="mb-10 space-y-8">
-                  <div className="flex items-center gap-5 text-sm sm:text-base font-bold text-white/60">
-                    <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 flex-shrink-0">
-                      <Calendar className="h-6 w-6 text-accent" />
+              <div className="lg:sticky lg:top-32 rounded-[3.5rem] sm:rounded-[5rem] border border-white/10 bg-white/[0.02] p-10 sm:p-14 backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)]">
+                <div className="mb-12 space-y-10">
+                  <div className="flex items-center gap-6 text-base sm:text-lg font-bold text-white/60">
+                    <div className="h-14 w-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 flex-shrink-0">
+                      <Calendar className="h-7 w-7 text-accent" />
                     </div>
                     <span>{format(new Date(event.date), "EEEE, MMM dd, yyyy · h:mm a")}</span>
                   </div>
-                  <div className="flex items-center gap-5 text-sm sm:text-base font-bold text-white/60">
-                    <div className="h-12 w-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 flex-shrink-0">
-                      <MapPin className="h-6 w-6 text-rose-500" />
+                  <div className="flex items-center gap-6 text-base sm:text-lg font-bold text-white/60">
+                    <div className="h-14 w-14 flex items-center justify-center rounded-2xl bg-white/5 border border-white/5 flex-shrink-0">
+                      <MapPin className="h-7 w-7 text-rose-500" />
                     </div>
                     <span className="text-balance">{event.venue ? `${event.venue}, ` : ""}{event.location}</span>
                   </div>
                 </div>
 
-                <div className="mb-10 rounded-3xl border border-white/5 bg-white/5 p-8 text-center bg-gradient-to-b from-white/[0.05] to-transparent">
-                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-3">Price Per Pass</p>
-                  <p className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tighter">
+                <div className="mb-12 rounded-[2.5rem] border border-white/5 bg-white/5 p-10 text-center bg-gradient-to-b from-white/[0.05] to-transparent">
+                  <p className="text-[11px] font-black uppercase tracking-[0.4em] text-white/30 mb-4">Price Per Pass</p>
+                  <p className="font-display text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter">
                     {Number(event.price) === 0 ? "Complimentary" : `KSH ${Number(event.price).toLocaleString()}`}
                   </p>
                 </div>

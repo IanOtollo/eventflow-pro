@@ -143,13 +143,13 @@ export default function Index() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-12 sm:mb-16"
+            className="mb-16 sm:mb-20"
           >
-            <div className="inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-5 py-2 backdrop-blur-2xl mb-6">
-               <div className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-               <span className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.4em] text-white">Xperience Fun The Fun Way</span>
+            <div className="inline-flex items-center gap-3 rounded-full bg-accent/20 border border-accent/20 px-6 py-3 backdrop-blur-2xl mb-10">
+               <div className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+               <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.4em] text-white">Xperience Fun The Fun Way</span>
             </div>
-            <h1 className="font-display text-4xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase max-w-5xl mx-auto leading-[0.95] text-balance">
+            <h1 className="font-display text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase max-w-5xl mx-auto leading-[0.9] text-balance">
                Discover <span className="text-accent italic">Elite</span> Events
             </h1>
           </motion.div>
@@ -158,7 +158,7 @@ export default function Index() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl mx-auto"
+            className="grid gap-12 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-7xl mx-auto"
           >
             {dailySpotlight.map((event, i) => (
               <div key={`${event.id}-${i}`} className="relative group w-full">
@@ -173,27 +173,27 @@ export default function Index() {
       </section>
 
       {/* Discovery Feed: Gigs & Events */}
-      <section className="relative z-10 py-12 sm:py-24 lg:py-32 px-6 sm:px-10">
+      <section className="relative z-10 py-16 sm:py-24 lg:py-32 px-6 sm:px-10">
         <div className="container mx-auto">
-          <div className="mb-12 sm:mb-20 flex flex-col justify-between gap-10 lg:flex-row lg:items-end">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/5 bg-white/5 px-4 py-2 backdrop-blur-md">
-                <Flame className="h-4 w-4 text-rose-500" />
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60">The Live Feed</span>
+          <div className="mb-16 sm:mb-24 flex flex-col justify-between gap-12 lg:flex-row lg:items-end">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/5 bg-white/5 px-5 py-2 backdrop-blur-md">
+                <Flame className="h-5 w-5 text-rose-500" />
+                <span className="text-[11px] font-black uppercase tracking-[0.4em] text-white/60">The Live Feed</span>
               </div>
-              <h2 className="font-display text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase text-balance">
+              <h2 className="font-display text-6xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-white uppercase text-balance">
                 Upcoming <span className="text-white/10 italic">Gigs</span>
               </h2>
             </div>
-            <div className="max-w-md space-y-4">
-              <p className="text-base sm:text-lg font-medium text-white/40 leading-relaxed text-balance">
+            <div className="max-w-md space-y-6">
+              <p className="text-lg sm:text-lg font-medium text-white/40 leading-relaxed text-balance">
                 Explore premier events across the spectrum. Direct booking, instant verification, and zero filler.
               </p>
               <div className="h-px w-full bg-gradient-to-r from-white/10 to-transparent" />
             </div>
           </div>
 
-          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
+          <div className="grid gap-12 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
             {events.map((event, i) => (
               <EventCard key={event.id} event={event as any} index={i} />
             ))}
