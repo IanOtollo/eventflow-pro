@@ -1,18 +1,21 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Plane, MapPin, Star, Sparkles } from "lucide-react";
+import { Plane, MapPin } from "lucide-react";
+import { CinematicLoading } from "@/components/CinematicLoading";
 
-const TRAVEL_PACKAGES = [
+const FALLBACK_TRAVEL_PACKAGES = [
   {
     id: "t1",
     title: "Malindi Coastal Escape",
     desc: "Premium seaside retreat. Round-trip SGR/Flight transfers included with 4 nights of luxury.",
     price: 35000,
     hotel: "Whitehaven Resort, Watamu",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop",
   },
   {
     id: "t2",
@@ -20,7 +23,7 @@ const TRAVEL_PACKAGES = [
     desc: "Fly directly into the wild. Experience the majesty of the Mara with elite guides.",
     price: 85000,
     hotel: "Mara Elite Camp",
-    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop",
   },
   {
     id: "t3",
@@ -28,11 +31,28 @@ const TRAVEL_PACKAGES = [
     desc: "Discover the soul of the Swahili coast. A private cultural immersion in the heart of Lamu.",
     price: 45000,
     hotel: "Majlis Resort",
-    image: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=2070&auto=format&fit=crop"
-  }
+    image: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=2070&auto=format&fit=crop",
+  },
 ];
 
 export default function Travel() {
+  const { data: travelEvents, isLoading } = useQuery({
+    queryKey: ["travel-events"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .eq("is_published", true)
+        .ilike("category", "travel%");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const hasDynamicTravel = travelEvents && travelEvents.length > 0;
+
+  if (isLoading) return <CinematicLoading />;
+
   return (
     <div className="flex min-h-screen flex-col bg-[#050505]">
       <Header />
@@ -55,7 +75,54 @@ export default function Travel() {
 
         <section className="py-16 px-6">
           <div className="container grid gap-10 sm:gap-12 lg:grid-cols-3">
-             {TRAVEL_PACKAGES.map((pkg, i) => (
+             {hasDynamicTravel
+               ? travelEvents!.map((event, i) => (
+               <motion.div 
+                 key={event.id}
+                 initial={{ opacity: 0, y: 30 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ delay: i * 0.1 }}
+                 className="group relative h-[500px] sm:h-[600px] overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-[#080808]"
+               >
+                 <Link to={`/events/${event.id}`} className="absolute inset-0">
+                   <img
+                     src={event.image_url || "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop"}
+                     alt={event.title}
+                     className="h-full w-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                   <div className="absolute inset-x-0 bottom-0 p-10">
+                      <div className="flex items-center gap-3 mb-6">
+                         <MapPin className="h-4 w-4 text-accent" />
+                         <span className="text-[10px] font-black uppercase tracking-widest text-white/60">
+                           {event.venue || event.location}
+                         </span>
+                      </div>
+                      <h3 className="font-display text-4xl font-black text-white uppercase tracking-tighter mb-4">
+                        {event.title}
+                      </h3>
+                      <p className="text-sm text-white/40 mb-8 font-medium leading-relaxed line-clamp-3">
+                        {event.description || "Curated premium travel experience powered by IOMBookings."}
+                      </p>
+                      <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                         <div className="flex flex-col">
+                            <span className="text-[8px] font-black uppercase tracking-widest text-accent mb-1">Total Package</span>
+                            <span className="font-display text-3xl font-black text-white">
+                              KSH {Number(event.price).toLocaleString()}
+                            </span>
+                         </div>
+                         <Button
+                           size="lg"
+                           className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent transition-all"
+                         >
+                           View & Book
+                         </Button>
+                      </div>
+                   </div>
+                 </Link>
+               </motion.div>
+             ))
+             : FALLBACK_TRAVEL_PACKAGES.map((pkg, i) => (
                <motion.div 
                  key={pkg.id}
                  initial={{ opacity: 0, y: 30 }}
@@ -77,7 +144,21 @@ export default function Travel() {
                           <span className="text-[8px] font-black uppercase tracking-widest text-accent mb-1">Total Package</span>
                           <span className="font-display text-3xl font-black text-white">KSH {pkg.price.toLocaleString()}</span>
                        </div>
-                       <Button size="lg" className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent transition-all">Book Package</Button>
+                       <Button
+                         asChild
+                         size="lg"
+                         className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent transition-all"
+                       >
+                         <a
+                           href={`mailto:iombookings@gmail.com?subject=Travel%20Enquiry:%20${encodeURIComponent(
+                             pkg.title,
+                           )}&body=Hi%20IOMBookings,%0D%0A%0D%0AI'd%20like%20to%20book%20the%20${encodeURIComponent(
+                             pkg.title,
+                           )}%20package.%0D%0A%0D%0ARegards,%0D%0A`}
+                         >
+                           Book Package
+                         </a>
+                       </Button>
                     </div>
                  </div>
                </motion.div>

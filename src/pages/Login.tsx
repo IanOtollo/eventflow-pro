@@ -12,6 +12,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resetting, setResetting] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -28,6 +29,23 @@ export default function Login() {
     } else {
       toast.success("Welcome back to the Showcase.");
       navigate("/dashboard");
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (!email.trim()) {
+      toast.error("Enter your email above first to reset.");
+      return;
+    }
+    setResetting(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: window.location.origin,
+    });
+    setResetting(false);
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Reset link sent. Check your email.");
     }
   };
 
@@ -72,7 +90,14 @@ export default function Login() {
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <Label htmlFor="password" className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Security Password</Label>
-                <Link to="#" className="text-[9px] font-black uppercase tracking-[0.2em] text-accent/40 hover:text-accent">Reset Pin?</Link>
+                <button
+                  type="button"
+                  onClick={handleResetPassword}
+                  className="text-[9px] font-black uppercase tracking-[0.2em] text-accent/40 hover:text-accent"
+                  disabled={resetting}
+                >
+                  {resetting ? "Sending..." : "Reset Pin?"}
+                </button>
               </div>
               <Input 
                 id="password" 

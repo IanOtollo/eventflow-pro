@@ -1,18 +1,21 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Home, Sparkles, Star, Zap } from "lucide-react";
+import { Home } from "lucide-react";
+import { CinematicLoading } from "@/components/CinematicLoading";
 
-const STAYCATIONS = [
+const FALLBACK_STAYCATIONS = [
   {
     id: "s1",
     title: "The Glass House",
     location: "Nanyuki, Kenya",
     price: 25000,
     tags: ["Modern", "Mountain View"],
-    image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=2070&auto=format&fit=crop",
   },
   {
     id: "s2",
@@ -20,7 +23,7 @@ const STAYCATIONS = [
     location: "Kipini, Kenya",
     price: 18000,
     tags: ["Beachfront", "Eco-Friendly"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop",
   },
   {
     id: "s3",
@@ -28,11 +31,28 @@ const STAYCATIONS = [
     location: "Nairobi, Westlands",
     price: 12000,
     tags: ["City Lights", "Pool"],
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop"
-  }
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop",
+  },
 ];
 
 export default function Staycations() {
+  const { data: staycationEvents, isLoading } = useQuery({
+    queryKey: ["staycation-events"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .eq("is_published", true)
+        .ilike("category", "staycation%");
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  const hasDynamicStaycations = staycationEvents && staycationEvents.length > 0;
+
+  if (isLoading) return <CinematicLoading />;
+
   return (
     <div className="flex min-h-screen flex-col bg-[#050505]">
       <Header />
@@ -55,7 +75,57 @@ export default function Staycations() {
 
         <section className="py-16 px-6">
           <div className="container grid gap-10 md:grid-cols-2">
-             {STAYCATIONS.map((stay, i) => (
+             {hasDynamicStaycations
+               ? staycationEvents!.map((event, i) => (
+               <motion.div 
+                 key={event.id}
+                 initial={{ opacity: 0, scale: 0.98 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ delay: i * 0.1 }}
+                 className="group relative h-[450px] sm:h-[500px] overflow-hidden rounded-[2rem] sm:rounded-[4rem] border border-white/5 bg-[#080808]"
+               >
+                 <Link to={`/events/${event.id}`} className="absolute inset-0">
+                   <img
+                     src={event.image_url || "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop"}
+                     alt={event.title}
+                     className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-75"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
+                      <div className="flex gap-2 mb-6 flex-wrap">
+                        {(event.category ? [event.category] : []).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[8px] font-black uppercase tracking-widest text-accent/60 px-3 py-1 rounded-full border border-accent/20"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="font-display text-5xl font-black text-white uppercase tracking-tighter mb-2 line-clamp-2">
+                        {event.title}
+                      </h3>
+                      <p className="text-sm font-bold text-white/40 uppercase tracking-widest mb-10">
+                        {event.venue ? `${event.venue}, ` : ""}
+                        {event.location}
+                      </p>
+                      <div className="flex items-center justify-between pt-10 border-t border-white/5">
+                         <span className="font-display text-4xl font-black text-white">
+                           KSH {Number(event.price).toLocaleString()}{" "}
+                           <span className="text-xs uppercase text-white/20 tracking-widest font-sans">/ Night</span>
+                         </span>
+                         <Button
+                           size="lg"
+                           className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent hover:scale-105 transition-all"
+                         >
+                           View & Book
+                         </Button>
+                      </div>
+                   </div>
+                 </Link>
+               </motion.div>
+             ))
+             : FALLBACK_STAYCATIONS.map((stay, i) => (
                <motion.div 
                  key={stay.id}
                  initial={{ opacity: 0, scale: 0.98 }}
@@ -75,7 +145,21 @@ export default function Staycations() {
                     <p className="text-sm font-bold text-white/40 uppercase tracking-widest mb-10">{stay.location}</p>
                     <div className="flex items-center justify-between pt-10 border-t border-white/5">
                        <span className="font-display text-4xl font-black text-white">KSH {stay.price.toLocaleString()} <span className="text-xs uppercase text-white/20 tracking-widest font-sans">/ Night</span></span>
-                       <Button size="lg" className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent hover:scale-105 transition-all">Secure Spot</Button>
+                       <Button
+                         asChild
+                         size="lg"
+                         className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent hover:scale-105 transition-all"
+                       >
+                         <a
+                           href={`mailto:iombookings@gmail.com?subject=Staycation%20Enquiry:%20${encodeURIComponent(
+                             stay.title,
+                           )}&body=Hi%20IOMBookings,%0D%0A%0D%0AI'd%20like%20to%20book%20${encodeURIComponent(
+                             stay.title,
+                           )}.%0D%0A%0D%0ARegards,%0D%0A`}
+                         >
+                           Secure Spot
+                         </a>
+                       </Button>
                     </div>
                  </div>
                </motion.div>

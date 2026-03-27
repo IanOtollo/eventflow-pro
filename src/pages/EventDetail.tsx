@@ -105,6 +105,32 @@ export default function EventDetail() {
 
   const spotsLeft = event.capacity - (bookingCount ?? 0);
 
+  const amenities: string[] = (() => {
+    const category = (event.category || "").toLowerCase();
+    if (category.includes("travel")) {
+      return [
+        "Return transfers or flight coordination",
+        "Curated hotel or resort partner",
+        "On-ground concierge support",
+        "Flexible check‑in assistance",
+      ];
+    }
+    if (category.includes("staycation")) {
+      return [
+        "Premium room or villa category",
+        "Late checkout subject to availability",
+        "Complimentary breakfast for all guests",
+        "On‑call support from IOMBookings",
+      ];
+    }
+    return [
+      "Instant QR‑verified digital pass",
+      "Secure payment and ticket vaulting",
+      "Real‑time capacity management",
+      "Dedicated support via iombookings@gmail.com",
+    ];
+  })();
+
   return (
     <div className="flex min-h-screen flex-col bg-[#050505]">
       <Header />
@@ -148,6 +174,26 @@ export default function EventDetail() {
                 <p className="text-xl sm:text-2xl font-medium text-white/40 leading-relaxed whitespace-pre-wrap max-w-3xl text-balance">
                   {event.description || "No specific details provided for this showcase walkthrough."}
                 </p>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-3xl border border-white/5 bg-white/5 p-6">
+                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Included Amenities</p>
+                    <ul className="space-y-2 text-sm font-medium text-white/70">
+                      {amenities.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="rounded-3xl border border-white/5 bg-black/40 p-6">
+                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Access Notes</p>
+                    <p className="text-sm font-medium text-white/50 leading-relaxed">
+                      Your QR ticket unlocks full access to this experience. Present it at the gate or check‑in desk for
+                      instant verification and support.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 

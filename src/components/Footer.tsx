@@ -40,10 +40,10 @@ export function Footer() {
           <div className="text-center sm:text-left">
             <h4 className="mb-8 sm:mb-10 font-display text-xs font-black uppercase tracking-[0.3em] text-white">Marketplace</h4>
             <ul className="space-y-6 text-xs font-black uppercase tracking-[0.2em] text-white/30">
-              <li><Link to="/events" className="transition-all hover:text-accent hover:translate-x-1 inline-block flex items-center justify-center sm:justify-start gap-2">Browse Gigs <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100" /></Link></li>
-              <li><Link to="#" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Featured Pass</Link></li>
-              <li><Link to="#" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Trending Now</Link></li>
-              <li><Link to="#" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Partner Events</Link></li>
+              <li><Link to="/" className="transition-all hover:text-accent hover:translate-x-1 inline-block flex items-center justify-center sm:justify-start gap-2">Browse Gigs <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100" /></Link></li>
+              <li><Link to="/" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Featured Pass</Link></li>
+              <li><Link to="/" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Trending Now</Link></li>
+              <li><Link to="/advertise" className="transition-all hover:text-accent hover:translate-x-1 inline-block">Partner Events</Link></li>
             </ul>
           </div>
 
@@ -52,8 +52,8 @@ export function Footer() {
             <ul className="space-y-6 text-xs font-black uppercase tracking-[0.2em] text-white/30">
               <li><Link to="/signup" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Start Advertising</Link></li>
               <li><Link to="/admin" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Live Analytics</Link></li>
-              <li><Link to="#" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">POS Systems</Link></li>
-              <li><Link to="#" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Privacy & Terms</Link></li>
+              <li><Link to="/advertise" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">POS Systems</Link></li>
+              <li><Link to="/legal" className="transition-all hover:text-purple-400 hover:translate-x-1 inline-block">Privacy & Terms</Link></li>
             </ul>
           </div>
 

@@ -2,13 +2,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { LogOut, LayoutDashboard, Menu, X, Ticket, Shield } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const { user, isAdmin, signOut } = useAuth();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Prevent background scroll while the mobile menu is open.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobileOpen]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -22,7 +32,7 @@ export function Header() {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
       className="sticky top-0 z-50 glass-panel border-b-0"
     >
-      <div className="container flex h-20 sm:h-24 lg:h-32 items-center justify-between px-6 sm:px-10">
+      <div className="mx-auto flex w-full max-w-7xl h-16 sm:h-20 lg:h-32 items-center justify-between px-4 sm:px-6 lg:px-10">
         <Link to="/" className="flex items-center gap-4 font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white group">
           <div className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-accent text-accent-foreground shadow-[0_0_30px_rgba(16,185,129,0.4)] transform group-hover:scale-110 transition-transform">
              <Ticket className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8" />
@@ -32,7 +42,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex flex-1 items-center justify-center gap-2">
+        <nav className="hidden md:flex flex-1 items-center justify-center gap-2">
           <Link to="/" className="px-6 py-3 text-[12px] font-black uppercase tracking-[0.4em] text-white/70 transition-all hover:text-accent hover:bg-white/5 rounded-full">
             Shows
           </Link>
@@ -53,14 +63,14 @@ export function Header() {
         </nav>
         
         <div className="flex items-center gap-4">
-          <div className="hidden lg:block h-6 w-px bg-white/10 mx-4" />
+          <div className="hidden md:block h-6 w-px bg-white/10 mx-4" />
           <Button size="lg" className="hidden sm:inline-flex bg-accent text-accent-foreground font-black uppercase tracking-widest hover:scale-105 transition-transform rounded-full px-10 shadow-2xl shadow-accent/20 h-14 text-[11px]" asChild>
             <Link to="/advertise">Go Live</Link>
           </Button>
           
           {/* High-Impact Mobile Menu Toggle */}
-          <button 
-            className="lg:hidden h-16 w-16 sm:h-20 sm:w-20 flex items-center justify-center rounded-2xl bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]" 
+          <button
+            className="md:hidden h-14 w-14 sm:h-16 sm:w-16 flex items-center justify-center rounded-2xl bg-white/10 border-2 border-white/20 text-white hover:bg-white/20 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >
@@ -77,13 +87,13 @@ export function Header() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] flex flex-col bg-[#050505]/95 backdrop-blur-[50px] lg:hidden overflow-y-auto pt-safe-top"
+          className="fixed inset-0 z-[100] flex flex-col bg-[#050505]/95 backdrop-blur-[50px] md:hidden overflow-y-auto pt-16 sm:pt-20"
         >
           {/* Animated Background Orbs */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 blur-[150px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 blur-[150px] rounded-full pointer-events-none" />
 
-          <div className="container relative z-10 flex flex-col min-h-full px-6 py-10">
+          <div className="relative z-10 flex flex-col w-full mx-auto min-h-full max-w-7xl px-6 py-10">
             <div className="flex items-center justify-between mb-12 sm:mb-20">
                <Link to="/" onClick={() => setMobileOpen(false)} className="font-display text-2xl font-black text-white uppercase tracking-tighter">
                  IOM<span className="text-accent underline decoration-accent/20 underline-offset-8 font-black uppercase">Bookings</span>
@@ -96,7 +106,7 @@ export function Header() {
                </button>
             </div>
 
-            <nav className="flex flex-col gap-6 sm:gap-8 mb-20">
+            <nav className="flex flex-col gap-5 sm:gap-6 mb-16">
               {[
                 { label: "Shows", path: "/" },
                 { label: "Travel", path: "/travel" },
@@ -112,14 +122,14 @@ export function Header() {
                   <Link 
                     to={item.path} 
                     onClick={() => setMobileOpen(false)} 
-                    className="group relative inline-block"
+                    className="group relative w-full rounded-full"
                   >
-                    <span className="font-display text-4xl xs:text-5xl sm:text-7xl font-black text-white uppercase tracking-tighter transition-all group-hover:text-accent flex items-center gap-4">
+                    <span className="block text-center font-display text-[12px] sm:text-[13px] font-black text-white/70 uppercase tracking-[0.4em] transition-all group-hover:text-accent py-4">
                        {item.label}
                        <motion.div 
                          initial={{ scaleX: 0 }}
                          whileHover={{ scaleX: 1 }}
-                         className="h-0.5 w-full bg-accent absolute bottom-0 left-0 origin-left"
+                        className="h-0.5 w-2/3 bg-accent absolute bottom-[10px] left-1/2 -translate-x-1/2 origin-left"
                        />
                     </span>
                   </Link>
@@ -135,9 +145,16 @@ export function Header() {
                   <Link 
                     to="/admin" 
                     onClick={() => setMobileOpen(false)} 
-                    className="font-display text-4xl xs:text-5xl sm:text-7xl font-black text-white/20 uppercase tracking-tighter italic hover:text-accent transition-colors"
+                    className="group relative w-full rounded-full"
                   >
-                    Insights
+                    <span className="block text-center font-display text-[12px] sm:text-[13px] font-black text-white/70 uppercase tracking-[0.4em] italic hover:text-accent py-4">
+                      Insights
+                      <motion.div
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        className="h-0.5 w-2/3 bg-accent absolute bottom-[10px] left-1/2 -translate-x-1/2 origin-left"
+                      />
+                    </span>
                   </Link>
                 </motion.div>
               )}

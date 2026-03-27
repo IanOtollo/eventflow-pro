@@ -17,6 +17,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Advertise from "./pages/Advertise";
 import Travel from "./pages/Travel";
 import Staycations from "./pages/Staycations";
+import Pricing from "./pages/Pricing";
+import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +55,8 @@ const AppRoutes = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/events/:id" element={<EventDetail />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/legal" element={<Legal />} />
           <Route path="/advertise" element={<Advertise />} />
           <Route path="/travel" element={<Travel />} />
           <Route path="/staycations" element={<Staycations />} />
