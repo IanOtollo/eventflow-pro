@@ -91,29 +91,29 @@ export default function Travel() {
                      className="h-full w-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                   <div className="absolute inset-x-0 bottom-0 p-10">
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
                       <div className="flex items-center gap-3 mb-6">
                          <MapPin className="h-4 w-4 text-accent" />
                          <span className="text-[10px] font-black uppercase tracking-widest text-white/60">
                            {event.venue || event.location}
                          </span>
                       </div>
-                      <h3 className="font-display text-4xl font-black text-white uppercase tracking-tighter mb-4">
+                      <h3 className="font-display text-2xl sm:text-4xl font-black text-white uppercase tracking-tighter mb-3 sm:mb-4 line-clamp-2">
                         {event.title}
                       </h3>
-                      <p className="text-sm text-white/40 mb-8 font-medium leading-relaxed line-clamp-3">
+                      <p className="text-xs sm:text-sm text-white/40 mb-5 sm:mb-8 font-medium leading-relaxed line-clamp-3">
                         {event.description || "Curated premium travel experience powered by IOMBookings."}
                       </p>
-                      <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                      <div className="flex flex-wrap items-end justify-between gap-4 pt-5 sm:pt-8 border-t border-white/5">
                          <div className="flex flex-col">
                             <span className="text-[8px] font-black uppercase tracking-widest text-accent mb-1">Total Package</span>
-                            <span className="font-display text-3xl font-black text-white">
+                            <span className="font-display text-2xl sm:text-3xl font-black text-white">
                               KSH {Number(event.price).toLocaleString()}
                             </span>
                          </div>
                          <Button
                            size="lg"
-                           className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent transition-all"
+                           className="h-12 sm:h-16 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] sm:tracking-widest text-[9px] sm:text-[10px] hover:bg-accent transition-all"
                          >
                            View & Book
                          </Button>
@@ -132,22 +132,22 @@ export default function Travel() {
                >
                  <img src={pkg.image} alt={pkg.title} className="h-full w-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                 <div className="absolute inset-x-0 bottom-0 p-10">
+                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
                     <div className="flex items-center gap-3 mb-6">
                        <MapPin className="h-4 w-4 text-accent" />
                        <span className="text-[10px] font-black uppercase tracking-widest text-white/60">{pkg.hotel}</span>
                     </div>
-                    <h3 className="font-display text-4xl font-black text-white uppercase tracking-tighter mb-4">{pkg.title}</h3>
-                    <p className="text-sm text-white/40 mb-8 font-medium leading-relaxed">{pkg.desc}</p>
-                    <div className="flex items-center justify-between pt-8 border-t border-white/5">
+                    <h3 className="font-display text-2xl sm:text-4xl font-black text-white uppercase tracking-tighter mb-3 sm:mb-4 line-clamp-2">{pkg.title}</h3>
+                    <p className="text-xs sm:text-sm text-white/40 mb-5 sm:mb-8 font-medium leading-relaxed line-clamp-3">{pkg.desc}</p>
+                    <div className="flex flex-wrap items-end justify-between gap-4 pt-5 sm:pt-8 border-t border-white/5">
                        <div className="flex flex-col">
                           <span className="text-[8px] font-black uppercase tracking-widest text-accent mb-1">Total Package</span>
-                          <span className="font-display text-3xl font-black text-white">KSH {pkg.price.toLocaleString()}</span>
+                          <span className="font-display text-2xl sm:text-3xl font-black text-white">KSH {pkg.price.toLocaleString()}</span>
                        </div>
                        <Button
                          asChild
                          size="lg"
-                         className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent transition-all"
+                         className="h-12 sm:h-16 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] sm:tracking-widest text-[9px] sm:text-[10px] hover:bg-accent transition-all"
                        >
                          <a
                            href={`mailto:iombookings@gmail.com?subject=Travel%20Enquiry:%20${encodeURIComponent(

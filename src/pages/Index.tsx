@@ -221,19 +221,19 @@ export default function Index() {
                   initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="group relative h-[350px] sm:h-[400px] lg:h-[450px] w-full overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-black"
+                  className="group relative h-[380px] sm:h-[400px] lg:h-[450px] w-full overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-black"
                 >
                   <img src={item.image} alt={item.title} className="h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10 text-left bg-gradient-to-t from-black via-black/40 to-transparent">
-                    <div className="flex gap-2 mb-4">
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-10 text-left bg-gradient-to-t from-black via-black/40 to-transparent">
+                    <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                       {item.tags.map(tag => (
                         <span key={tag} className="text-[8px] font-black uppercase tracking-widest text-accent/60 px-2.5 py-1 rounded-full border border-accent/20">{tag}</span>
                       ))}
                     </div>
-                    <h3 className="font-display text-2xl sm:text-3xl font-black text-white uppercase tracking-tighter mb-2">{item.title}</h3>
-                    <div className="flex flex-wrap items-center justify-between gap-4 mt-6">
-                      <p className="font-display text-xl sm:text-2xl font-black text-white/40 group-hover:text-white transition-colors">KSH {item.price.toLocaleString()}</p>
-                      <Button variant="ghost" className="h-12 px-6 rounded-full border border-white/10 text-[9px] font-black uppercase tracking-[0.3em] text-white/60 hover:bg-white hover:text-black">Explore Trip</Button>
+                    <h3 className="font-display text-xl sm:text-3xl font-black text-white uppercase tracking-tighter mb-2 line-clamp-2">{item.title}</h3>
+                    <div className="flex flex-wrap items-end justify-between gap-3 mt-4 sm:mt-6">
+                      <p className="font-display text-lg sm:text-2xl font-black text-white/40 group-hover:text-white transition-colors">KSH {item.price.toLocaleString()}</p>
+                      <Button variant="ghost" className="h-10 sm:h-12 px-4 sm:px-6 rounded-full border border-white/10 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white/60 hover:bg-white hover:text-black">Explore Trip</Button>
                     </div>
                   </div>
                 </motion.div>
@@ -263,16 +263,16 @@ export default function Index() {
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="group relative h-[450px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-[2.5rem] sm:rounded-[4rem] border border-white/5"
+                  className="group relative h-[500px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-[2.5rem] sm:rounded-[4rem] border border-white/5"
                 >
                   <img src={stay.image} alt={stay.title} className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-70" />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
-                  <div className="absolute inset-x-0 bottom-0 p-8 sm:p-12">
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
                      <p className="text-[10px] font-black uppercase tracking-[0.5em] text-accent mb-4">Elite Staycation</p>
-                     <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter mb-8 leading-tight">{stay.title}</h3>
-                     <div className="flex flex-wrap items-center justify-between gap-6 pt-8 border-t border-white/5">
-                       <span className="font-display text-2xl sm:text-3xl font-black text-white">KSH {stay.price.toLocaleString()} <span className="text-[10px] uppercase text-white/20 tracking-widest font-sans">/ Night</span></span>
-                       <Button className="h-14 sm:h-16 px-8 sm:px-10 rounded-2xl bg-white text-black font-black uppercase tracking-[0.3em] text-[10px] hover:bg-accent transition-all">View Stay</Button>
+                     <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter mb-5 sm:mb-8 leading-tight line-clamp-2">{stay.title}</h3>
+                     <div className="flex flex-wrap items-end justify-between gap-4 pt-5 sm:pt-8 border-t border-white/5">
+                       <span className="font-display text-xl sm:text-3xl font-black text-white">KSH {stay.price.toLocaleString()} <span className="text-[10px] uppercase text-white/20 tracking-widest font-sans">/ Night</span></span>
+                       <Button className="h-11 sm:h-16 px-5 sm:px-10 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[9px] sm:text-[10px] hover:bg-accent transition-all">View Stay</Button>
                      </div>
                   </div>
                 </motion.div>

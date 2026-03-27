@@ -26,12 +26,7 @@ export function Header() {
   };
 
   return (
-    <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="sticky top-0 z-50 glass-panel border-b-0"
-    >
+    <header className="sticky top-0 z-50 glass-panel border-b-0">
       <div className="mx-auto flex w-full max-w-7xl h-16 sm:h-20 lg:h-32 items-center justify-between px-4 sm:px-6 lg:px-10">
         <Link to="/" className="flex items-center gap-4 font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white group">
           <div className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 flex items-center justify-center rounded-xl sm:rounded-2xl bg-accent text-accent-foreground shadow-[0_0_30px_rgba(16,185,129,0.4)] transform group-hover:scale-110 transition-transform">
@@ -183,6 +178,6 @@ export function Header() {
         </motion.div>
       )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

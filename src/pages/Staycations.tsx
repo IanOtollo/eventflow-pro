@@ -91,8 +91,8 @@ export default function Staycations() {
                      className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-75"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
-                      <div className="flex gap-2 mb-6 flex-wrap">
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-12">
+                     <div className="flex gap-2 mb-4 sm:mb-6 flex-wrap">
                         {(event.category ? [event.category] : []).map((tag) => (
                           <span
                             key={tag}
@@ -102,21 +102,21 @@ export default function Staycations() {
                           </span>
                         ))}
                       </div>
-                      <h3 className="font-display text-5xl font-black text-white uppercase tracking-tighter mb-2 line-clamp-2">
+                      <h3 className="font-display text-2xl sm:text-5xl font-black text-white uppercase tracking-tighter mb-2 line-clamp-2">
                         {event.title}
                       </h3>
-                      <p className="text-sm font-bold text-white/40 uppercase tracking-widest mb-10">
+                      <p className="text-xs sm:text-sm font-bold text-white/40 uppercase tracking-[0.2em] sm:tracking-widest mb-5 sm:mb-10 line-clamp-1">
                         {event.venue ? `${event.venue}, ` : ""}
                         {event.location}
                       </p>
-                      <div className="flex items-center justify-between pt-10 border-t border-white/5">
-                         <span className="font-display text-4xl font-black text-white">
+                      <div className="flex flex-wrap items-end justify-between gap-4 pt-5 sm:pt-10 border-t border-white/5">
+                         <span className="font-display text-2xl sm:text-4xl font-black text-white">
                            KSH {Number(event.price).toLocaleString()}{" "}
                            <span className="text-xs uppercase text-white/20 tracking-widest font-sans">/ Night</span>
                          </span>
                          <Button
                            size="lg"
-                           className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent hover:scale-105 transition-all"
+                           className="h-11 sm:h-16 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] sm:tracking-widest text-[9px] sm:text-[10px] hover:bg-accent hover:scale-105 transition-all"
                          >
                            View & Book
                          </Button>
@@ -135,20 +135,20 @@ export default function Staycations() {
                >
                  <img src={stay.image} alt={stay.title} className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-75" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                 <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
-                    <div className="flex gap-2 mb-6">
+                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-12">
+                    <div className="flex gap-2 mb-4 sm:mb-6 flex-wrap">
                        {stay.tags.map(tag => (
                          <span key={tag} className="text-[8px] font-black uppercase tracking-widest text-accent/60 px-3 py-1 rounded-full border border-accent/20">{tag}</span>
                        ))}
                     </div>
-                    <h3 className="font-display text-5xl font-black text-white uppercase tracking-tighter mb-2">{stay.title}</h3>
-                    <p className="text-sm font-bold text-white/40 uppercase tracking-widest mb-10">{stay.location}</p>
-                    <div className="flex items-center justify-between pt-10 border-t border-white/5">
-                       <span className="font-display text-4xl font-black text-white">KSH {stay.price.toLocaleString()} <span className="text-xs uppercase text-white/20 tracking-widest font-sans">/ Night</span></span>
+                    <h3 className="font-display text-2xl sm:text-5xl font-black text-white uppercase tracking-tighter mb-2 line-clamp-2">{stay.title}</h3>
+                    <p className="text-xs sm:text-sm font-bold text-white/40 uppercase tracking-[0.2em] sm:tracking-widest mb-5 sm:mb-10 line-clamp-1">{stay.location}</p>
+                    <div className="flex flex-wrap items-end justify-between gap-4 pt-5 sm:pt-10 border-t border-white/5">
+                       <span className="font-display text-2xl sm:text-4xl font-black text-white">KSH {stay.price.toLocaleString()} <span className="text-xs uppercase text-white/20 tracking-widest font-sans">/ Night</span></span>
                        <Button
                          asChild
                          size="lg"
-                         className="h-16 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-[10px] hover:bg-accent hover:scale-105 transition-all"
+                         className="h-11 sm:h-16 rounded-2xl bg-white text-black font-black uppercase tracking-[0.2em] sm:tracking-widest text-[9px] sm:text-[10px] hover:bg-accent hover:scale-105 transition-all"
                        >
                          <a
                            href={`mailto:iombookings@gmail.com?subject=Staycation%20Enquiry:%20${encodeURIComponent(
