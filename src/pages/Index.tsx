@@ -16,7 +16,7 @@ export const MOCK_FEATURED = {
   id: "featured-1",
   title: "NEON ECHO: THE STADIUM TOUR",
   description: "Xperience Fun. Book the Moment. Live at the Kasarani Stadium for one night only of pure adrenaline.",
-  image_url: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop",
+  image_url: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=70&w=1200&auto=format&fit=crop",
   date: "2026-08-15T20:00:00",
   location: "Nairobi, Kenya",
   venue: "Kasarani Stadium",
@@ -37,7 +37,7 @@ export const MOCK_EVENTS = [
     price: 1500,
     capacity: 5000,
     category: "Tech & Business",
-    image_url: "https://images.unsplash.com/photo-1540575861501-7ad060e29ad3?q=80&w=2070&auto=format&fit=crop"
+    image_url: "https://images.unsplash.com/photo-1540575861501-7ad060e29ad3?q=60&w=800&auto=format&fit=crop"
   },
   {
     id: "m2",
@@ -49,7 +49,7 @@ export const MOCK_EVENTS = [
     price: 0,
     capacity: 2000,
     category: "Culture",
-    image_url: "https://images.unsplash.com/photo-1460518451285-cd7bc829857b?q=80&w=2070&auto=format&fit=crop"
+    image_url: "https://images.unsplash.com/photo-1460518451285-cd7bc829857b?q=60&w=800&auto=format&fit=crop"
   },
   {
     id: "m3",
@@ -61,7 +61,7 @@ export const MOCK_EVENTS = [
     price: 3500,
     capacity: 3000,
     category: "Music",
-    image_url: "https://images.unsplash.com/photo-1514525253361-bee8a48790c3?q=80&w=2070&auto=format&fit=crop"
+    image_url: "https://images.unsplash.com/photo-1514525253361-bee8a48790c3?q=60&w=800&auto=format&fit=crop"
   },
   {
     id: "m4",
@@ -73,18 +73,18 @@ export const MOCK_EVENTS = [
     price: 5000,
     capacity: 500,
     category: "Fashion",
-    image_url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2070&auto=format&fit=crop"
+    image_url: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=60&w=800&auto=format&fit=crop"
   }
 ];
 
 const MOCK_TRAVEL = [
-  { id: "t1", title: "Malindi Coastal Escape", price: 15500, image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2070&auto=format&fit=crop", tags: ["SGR", "Resort"] },
-  { id: "t2", title: "Maasai Mara Safari", price: 45000, image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=2068&auto=format&fit=crop", tags: ["Wilderness", "Luxury"] }
+  { id: "t1", title: "Malindi Coastal Escape", price: 15500, image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=60&w=800&auto=format&fit=crop", tags: ["SGR", "Resort"] },
+  { id: "t2", title: "Maasai Mara Safari", price: 45000, image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?q=60&w=800&auto=format&fit=crop", tags: ["Wilderness", "Luxury"] }
 ];
 
 const MOCK_STAYCATIONS = [
-  { id: "s1", title: "Watamu Beach Villa", price: 12500, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=2070&auto=format&fit=crop", tags: ["Boutique"] },
-  { id: "s2", title: "Nairobi Sky Penthouse", price: 18500, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop", tags: ["Urban"] }
+  { id: "s1", title: "Watamu Beach Villa", price: 12500, image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=60&w=800&auto=format&fit=crop", tags: ["Boutique"] },
+  { id: "s2", title: "Nairobi Sky Penthouse", price: 18500, image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=60&w=800&auto=format&fit=crop", tags: ["Urban"] }
 ];
 
 export default function Index() {
@@ -130,6 +130,8 @@ export default function Index() {
             transition={{ duration: 1.8, ease: "easeOut" }}
             src={featured.image_url || MOCK_FEATURED.image_url} 
             alt={featured.title} 
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           {/* Intense cinematic gradient and light leaks */}
@@ -223,7 +225,7 @@ export default function Index() {
                   viewport={{ once: true }}
                   className="group relative h-[380px] sm:h-[400px] lg:h-[450px] w-full overflow-hidden rounded-[2rem] sm:rounded-[3rem] border border-white/5 bg-black"
                 >
-                  <img src={item.image} alt={item.title} className="h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110" />
+                  <img src={item.image} alt={item.title} loading="lazy" decoding="async" className="h-full w-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-x-0 bottom-0 p-5 sm:p-10 text-left bg-gradient-to-t from-black via-black/40 to-transparent">
                     <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                       {item.tags.map(tag => (
@@ -265,7 +267,7 @@ export default function Index() {
                   viewport={{ once: true }}
                   className="group relative h-[500px] sm:h-[500px] lg:h-[600px] w-full overflow-hidden rounded-[2.5rem] sm:rounded-[4rem] border border-white/5"
                 >
-                  <img src={stay.image} alt={stay.title} className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-70" />
+                  <img src={stay.image} alt={stay.title} loading="lazy" decoding="async" className="h-full w-full object-cover opacity-50 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-70" />
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
                   <div className="absolute inset-x-0 bottom-0 p-6 sm:p-12">
                      <p className="text-[10px] font-black uppercase tracking-[0.5em] text-accent mb-4">Elite Staycation</p>

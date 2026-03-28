@@ -15,8 +15,9 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08, duration: 0.4 }}
     >
       <Link
         to={`/events/${event.id}`}
@@ -28,6 +29,8 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
             <img
               src={event.image_url}
               alt={event.title}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
             />
           ) : (

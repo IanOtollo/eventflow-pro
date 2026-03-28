@@ -7,23 +7,27 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { CinematicLoading } from "@/components/CinematicLoading";
 import Index from "./pages/Index";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import EventDetail from "./pages/EventDetail";
-import Dashboard from "./pages/Dashboard";
-import TicketView from "./pages/TicketView";
-import AdminDashboard from "./pages/AdminDashboard";
-import Advertise from "./pages/Advertise";
-import Travel from "./pages/Travel";
-import Staycations from "./pages/Staycations";
-import Pricing from "./pages/Pricing";
-import Legal from "./pages/Legal";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsAndConditions from "./pages/TermsAndConditions";
-import CookiePolicy from "./pages/CookiePolicy";
-import RefundPolicy from "./pages/RefundPolicy";
-import NotFound from "./pages/NotFound";
+
+// Lazy-loaded pages for code splitting
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const EventDetail = lazy(() => import("./pages/EventDetail"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const TicketView = lazy(() => import("./pages/TicketView"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const Advertise = lazy(() => import("./pages/Advertise"));
+const Travel = lazy(() => import("./pages/Travel"));
+const Staycations = lazy(() => import("./pages/Staycations"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Legal = lazy(() => import("./pages/Legal"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("./pages/TermsAndConditions"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -54,25 +58,27 @@ const AppRoutes = () => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="min-h-screen flex flex-col"
       >
-        <Routes location={location}>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/events/:id" element={<EventDetail />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/legal" element={<Legal />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
-          <Route path="/advertise" element={<Advertise />} />
-          <Route path="/travel" element={<Travel />} />
-          <Route path="/staycations" element={<Staycations />} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/ticket/:bookingId" element={<ProtectedRoute><TicketView /></ProtectedRoute>} />
-          <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<CinematicLoading />}>
+          <Routes location={location}>
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/events/:id" element={<EventDetail />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/legal" element={<Legal />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/advertise" element={<Advertise />} />
+            <Route path="/travel" element={<Travel />} />
+            <Route path="/staycations" element={<Staycations />} />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/ticket/:bookingId" element={<ProtectedRoute><TicketView /></ProtectedRoute>} />
+            <Route path="/admin" element={<ProtectedRoute adminOnly><AdminDashboard /></ProtectedRoute>} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </motion.div>
     </AnimatePresence>
   );

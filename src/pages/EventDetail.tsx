@@ -15,6 +15,9 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { CinematicLoading } from "@/components/CinematicLoading";
 
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const isValidUUID = (id: string) => UUID_REGEX.test(id);
+
 function generateTicketCode() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let code = "IOM-";
@@ -56,7 +59,8 @@ export default function EventDetail() {
       if (error) return 0;
       return count ?? 0;
     },
-    enabled: !!id,
+    // Only query Supabase for real UUIDs, skip mock IDs like "m3", "m4"
+    enabled: !!id && isValidUUID(id),
   });
 
   const bookMutation = useMutation({
@@ -150,7 +154,7 @@ export default function EventDetail() {
             <div className="lg:col-span-7 space-y-12 sm:space-y-16">
               <div className="relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden rounded-[2.5rem] sm:rounded-[4rem] border border-white/5 bg-[#0A0A0A] shadow-2xl">
                 {event.image_url ? (
-                  <img src={event.image_url} alt={event.title} className="h-full w-full object-cover opacity-80" />
+                  <img src={event.image_url} alt={event.title} loading="lazy" decoding="async" className="h-full w-full object-cover opacity-80" />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center">
                     <Ticket className="h-24 w-24 text-white/5" />
